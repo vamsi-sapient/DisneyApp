@@ -8,6 +8,16 @@
 import Foundation
 import SwiftUI
 
+public enum ViewType: String {
+    case navigationBar
+    case navigationBarTitle
+    case button
+}
+
+public enum ButtonType: String {
+    case primary, secondary
+}
+
 public protocol ThemeManagerProtocol {
     func colorFor(viewType: String, viewSubType: String?) -> UIColor
     func fontFor(viewType: String, viewSubType: String?) -> Font
