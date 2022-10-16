@@ -12,6 +12,7 @@ public enum ViewType: String {
     case navigationBar
     case navigationBarTitle
     case button
+    case imagePlaceHolder
 }
 
 public enum ButtonType: String {

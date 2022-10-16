@@ -27,7 +27,14 @@ struct CharacterListView: View {
     }
     
     public var body: some View {
-        Text("Hello, World, vamsi got it successfully!")
+        List {
+            ForEach(state.characters, id: \.id) { item in
+                CharacterListRow(item: item, themeManager: themeManager)
+            }
+        }
+        .navigationTitle(CharacterListViewConstants.Strings.screenTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .accessibilityIdentifier(CharacterListViewConstants.AccessibilityIdentifiers.view.rawValue)
     }
 }
 

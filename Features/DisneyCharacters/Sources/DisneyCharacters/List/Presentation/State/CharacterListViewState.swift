@@ -9,5 +9,15 @@ import Foundation
 import Core
 
 class CharacterListViewState: BaseStateObject {
-    @Published var characters = [CharacterDomainData]()
+    @Published var characters = [CharacterUIData]()
+}
+
+struct CharacterUIData: Codable {
+    let id: Int
+    let name: String
+    let imageUrl: String?
+    let url: String?
+    let films: [String]?
+    let tvShows: [String]?
+    let videoGames: [String]?
 }

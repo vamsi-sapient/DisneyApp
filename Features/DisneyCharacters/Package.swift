@@ -5,7 +5,8 @@ import PackageDescription
 
 let package = Package(
     name: "DisneyCharacters",
-    platforms: [.iOS("14.0"), .macOS("12.0")],
+    defaultLocalization: "en",
+    platforms: [.iOS("15.0"), .macOS("12.0")],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -25,7 +26,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DisneyCharacters",
-            dependencies: ["Core", "SharedDependencies", "DisneyUIKit", "NetworkManager"]),
+            dependencies: ["Core", "SharedDependencies", "DisneyUIKit", "NetworkManager"],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
             name: "DisneyCharactersTests",
             dependencies: ["DisneyCharacters"]),

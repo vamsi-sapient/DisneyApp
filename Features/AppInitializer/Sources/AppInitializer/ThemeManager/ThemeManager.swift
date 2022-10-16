@@ -30,6 +30,9 @@ public struct ThemeManager: ThemeManagerProtocol {
                 color = colorForButton(ButtonType(rawValue: viewSubType) ?? ButtonType.primary)
             }
             
+        case .imagePlaceHolder:
+            color = UIColor(named: DisneyColors.grey)
+            
         default:
             return UIColor.clear
         }

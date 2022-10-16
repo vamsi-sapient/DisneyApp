@@ -20,7 +20,20 @@ class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
     
     func getCharactersList() {
         usecase.getCharactersList().done { [weak self] data in
-            self?.state.characters = data.characters
+            var characters = [CharacterUIData]()
+            
+            data.characters.forEach { item in
+                characters.append(CharacterUIData(id: item.id,
+                                                  name: item.name,
+                                                  imageUrl: item.imageUrl,
+                                                  url: item.url,
+                                                  films: item.films,
+                                                  tvShows: item.tvShows,
+                                                  videoGames: item.videoGames)
+                                 )
+            }
+            
+            self?.state.characters = characters
         }.catch { error in
             
         }
