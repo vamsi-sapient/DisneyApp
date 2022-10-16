@@ -9,4 +9,5 @@ import Foundation
 import Core
 
 class CharacterListViewState: BaseStateObject {
+    @Published var characters = [CharacterDomainData]()
 }

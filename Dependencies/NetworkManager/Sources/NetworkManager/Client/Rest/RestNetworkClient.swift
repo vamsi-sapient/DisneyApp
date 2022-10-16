@@ -28,8 +28,14 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
     
     public func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {
         return Promise { [weak self] seal in
-            guard let url = URL(string: request.path) else {
-                self?.crashlytics.recordError("Could not convert the string to URL")
+            guard let weakself = self, let environment = weakself.environment else {
+                seal.reject(DisneyError(message: "Instance is destroyed"))
+                return
+            }
+            let baseURL = environment.authURL
+            
+            guard let url = URL(string: baseURL + request.path) else {
+                weakself.crashlytics.recordError("Could not convert the string to URL")
                 seal.reject(DisneyError(message: "Could not convert the string to URL"))
                 return
             }
@@ -41,7 +47,7 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
                     let bodyData = try JSONSerialization.data(withJSONObject: body, options: [.prettyPrinted])
                     urlRequest.httpBody = bodyData
                 } catch {
-                    self?.crashlytics.recordError("Could not convert the body parameters")
+                    weakself.crashlytics.recordError("Could not convert the body parameters")
                     seal.reject(DisneyError(message: "Could not convert the body parameters"))
                 }
             }
@@ -52,14 +58,14 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
             
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 guard error == nil else {
-                    self?.crashlytics.recordError(error!.localizedDescription)
+                    weakself.crashlytics.recordError(error!.localizedDescription)
                     seal.reject(error!)
                     return
                 }
                 
                 if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                     if statusCode >= 400 {
-                        self?.crashlytics.recordError("Network Request Failed with \(statusCode)")
+                        weakself.crashlytics.recordError("Network Request Failed with \(statusCode)")
                         seal.reject(DisneyError(message: "Network Request Failed with \(statusCode)"))
                         return
                     }
@@ -67,7 +73,7 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
                 
                 // Conversion
                 guard let data = data else {
-                    self?.crashlytics.recordError("Empty Data")
+                    weakself.crashlytics.recordError("Empty Data")
                     seal.reject(DisneyError(message: "Empty Data"))
                     return
                 }
@@ -79,7 +85,7 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
                     seal.fulfill(decodedObject)
                     
                 } catch {
-                    self?.crashlytics.recordError("Could not deserialize the data")
+                    weakself.crashlytics.recordError("Could not deserialize the data")
                     seal.reject(error)
                 }
             }

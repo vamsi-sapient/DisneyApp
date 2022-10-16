@@ -10,5 +10,5 @@ import Core
 import SwiftUI
 
 protocol CharacterListViewModelProtocol: BaseViewModel {
-    
+    func getCharactersList()
 }

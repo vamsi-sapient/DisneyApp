@@ -30,23 +30,25 @@ public struct EnvironmentSelectorView: View {
     }
     
     public var body: some View {
-        List {
-            Section {
-                ForEach(state.environmentTitles, id: \.id) { item in
-                    NavigationLink(destination: NavigationManager.navigateTo(screenIdentifier: initialViewIdentifier)) {
+        if state.selectedTitle.isEmpty {
+            List {
+                Section {
+                    ForEach(state.environmentTitles, id: \.id) { item in
                         EnvironmentSelectorRowView(title: item.title).onTapGesture {
                             nextScreen(item.title)
                         }
                     }
+                } header: {
+                    Text(EnvironmentSelectorViewConstants.Strings.screenHeader)
                 }
-            } header: {
-                Text(EnvironmentSelectorViewConstants.Strings.screenHeader)
+                .listStyle(.insetGrouped)
             }
-            .listStyle(.insetGrouped)
+            .navigationTitle(EnvironmentSelectorViewConstants.Strings.screenTitle)
+            .navigationBarTitleDisplayMode(.inline)
+            .accessibilityIdentifier(EnvironmentSelectorViewConstants.AccessibilityIdentifiers.view.rawValue)
+        } else {
+            NavigationManager.navigateTo(screenIdentifier: initialViewIdentifier)
         }
-        .navigationTitle(EnvironmentSelectorViewConstants.Strings.screenTitle)
-        .navigationBarTitleDisplayMode(.inline)
-        .accessibilityIdentifier(EnvironmentSelectorViewConstants.AccessibilityIdentifiers.view.rawValue)
     }
     
     private func nextScreen(_ title: String) {

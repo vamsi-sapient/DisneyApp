@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import Core
 
 public struct EnvironmentData {
-    let name: String
-    let unauthURL: String?
-    let authURL: String
-    let crmURL: String?
+    public let name: String
+    public let unauthURL: String?
+    public let authURL: String
+    public let crmURL: String?
     
     public init(name: String, unauthURL: String?, authURL: String, crmURL: String?) {
         self.name = name

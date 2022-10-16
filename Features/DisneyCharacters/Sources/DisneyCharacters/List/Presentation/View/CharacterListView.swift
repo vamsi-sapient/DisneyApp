@@ -22,6 +22,8 @@ struct CharacterListView: View {
         self.state = state
         self.themeManager = themeManager
         self.viewModel = viewModel
+        
+        self.viewModel?.getCharactersList()
     }
     
     public var body: some View {
@@ -31,11 +33,8 @@ struct CharacterListView: View {
 
 struct CharacterListView_Previews: PreviewProvider {
     static var previews: some View {
-        let result = CharacterListResult()
-        let state = CharacterListViewState()
-        
         CharacterListView(viewModel: nil,
-                          state: state,
+                          state: CharacterListViewState(),
                           themeManager: DefaultThemeManager())
     }
 }

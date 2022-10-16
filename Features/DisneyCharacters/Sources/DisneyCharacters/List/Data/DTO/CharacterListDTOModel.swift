@@ -10,11 +10,18 @@ import Core
 
 struct CharacterListDTOModel: BaseDTO {
     let characters: [CharacterDTOData]
+    
+    private enum CodingKeys : String, CodingKey {
+        case characters = "data"
+    }
 }
 
 struct CharacterDTOData: Codable {
+    let _id: Int
     let name: String
-    let unauthURL: String?
-    let authURL: String
-    let crmURL: String?
+    let imageUrl: String?
+    let url: String?
+    let films: [String]?
+    let tvShows: [String]?
+    let videoGames: [String]?
 }

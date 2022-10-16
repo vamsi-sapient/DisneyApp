@@ -41,6 +41,7 @@ public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorVie
             return
         }
         usecase.selectTheEnvironment(environment)
+        state.selectedTitle = title
     }
     
     private func filterEnvironment(_ title: String, environments: [EnvironmentDomainData]) -> EnvironmentDomainData? {

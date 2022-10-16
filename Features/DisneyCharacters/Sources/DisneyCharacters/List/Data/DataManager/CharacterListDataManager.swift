@@ -21,6 +21,6 @@ class CharacterListDataManager: CharacterListDataManagerProtocol {
     func getCharactersList() -> Response<CharacterListDTOModel> {
         return dataManager.request(CharacterListDTOModel.self,
                                    request: DataRequest(type: .REST,
-                                                        path: "Environments"))
+                                                        path: DisneyCharactersAPIConstants.characters.rawValue))
     }
 }

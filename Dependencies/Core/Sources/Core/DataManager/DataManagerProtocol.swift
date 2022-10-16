@@ -7,7 +7,6 @@
 
 import Foundation
 import PromiseKit
-import Core
 
 public protocol DataManagerProtocol {
     func setEnvironmentData(_ data: EnvironmentData)

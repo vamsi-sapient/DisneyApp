@@ -20,10 +20,15 @@ struct CharacterListDTOToDomainModelMapper: DTOToDomainModelMapper {
             return CharacterListDomainModel(characters: [CharacterDomainData]())
         }
         dtoModel.characters.forEach { element in
-            characters.append(CharacterDomainData(name: element.name,
-                                                      unauthURL: element.unauthURL,
-                                                      authURL: element.authURL,
-                                                      crmURL: element.crmURL))
+            characters.append(CharacterDomainData(id: element._id,
+                                                  name: element.name,
+                                                  imageUrl: element.imageUrl,
+                                                  url: element.url,
+                                                  films: element.films,
+                                                  tvShows: element.tvShows,
+                                                  videoGames: element.videoGames
+                                                 )
+                             )
         }
         
         return CharacterListDomainModel(characters: characters)

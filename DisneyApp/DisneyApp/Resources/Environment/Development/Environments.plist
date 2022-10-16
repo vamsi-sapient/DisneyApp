@@ -8,7 +8,7 @@
 			<key>name</key>
 			<string>qa</string>
 			<key>authURL</key>
-			<string></string>
+			<string>https://api.disneyapi.dev/</string>
 			<key>unauthURL</key>
 			<string></string>
 			<key>crmURL</key>

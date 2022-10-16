@@ -17,4 +17,12 @@ class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
         self.state = state
         self.usecase = usecase
     }
+    
+    func getCharactersList() {
+        usecase.getCharactersList().done { [weak self] data in
+            self?.state.characters = data.characters
+        }.catch { error in
+            
+        }
+    }
 }
