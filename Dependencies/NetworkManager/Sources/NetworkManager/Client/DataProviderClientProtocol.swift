@@ -9,5 +9,6 @@ import Foundation
 import Core
 
 public protocol DataProviderClientProtocol {
+    func setEnvironmentData(_ data: EnvironmentData)
     func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T>
 }

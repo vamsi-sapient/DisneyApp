@@ -11,6 +11,8 @@ import Core
 
 public class RestNetworkClient: NSObject, DataProviderClientProtocol {
     
+    private var environment: EnvironmentData?
+    
     private lazy var session = URLSession.shared
     private var crashlytics: CrashlyticsProtocol
     
@@ -18,6 +20,10 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
         self.crashlytics = crashlytics
         super.init()
         self.session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    }
+    
+    public func setEnvironmentData(_ data: EnvironmentData) {
+        environment = data
     }
     
     public func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {

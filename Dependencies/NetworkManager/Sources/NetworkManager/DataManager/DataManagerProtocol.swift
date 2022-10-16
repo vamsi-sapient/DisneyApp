@@ -10,5 +10,6 @@ import PromiseKit
 import Core
 
 public protocol DataManagerProtocol {
+    func setEnvironmentData(_ data: EnvironmentData)
     func request<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T>
 }

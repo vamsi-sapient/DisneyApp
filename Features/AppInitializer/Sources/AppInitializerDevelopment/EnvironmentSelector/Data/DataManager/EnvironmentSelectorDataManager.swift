@@ -10,7 +10,7 @@ import Core
 import SwiftUI
 import NetworkManager
 
-public class EnvironmentSelectorDataStore: EnvironmentSelectorDataStoreProtocol {
+public class EnvironmentSelectorDataManager: EnvironmentSelectorDataManagerProtocol {
     
     private let dataManager: DataManagerProtocol
     
@@ -22,5 +22,9 @@ public class EnvironmentSelectorDataStore: EnvironmentSelectorDataStoreProtocol 
         return dataManager.request(EnvironmentDTOModel.self,
                                    request: DataRequest(type: .PLIST,
                                                         path: "Environments"))
+    }
+    
+    public func selectTheEnvironment(_ data: EnvironmentData) {
+        dataManager.setEnvironmentData(data)
     }
 }

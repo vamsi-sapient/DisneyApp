@@ -12,13 +12,16 @@ public struct AppInitializer {
 
         let crashlytics = DefaultCrashlytics()
         let restClient = RestNetworkClient(crashlytics: crashlytics)
+        let networkManager = NetworkManager(crashlytics: crashlytics,
+                                            restClient: restClient,
+                                            graphqlClient: nil,
+                                            mockNetworkClient: nil)
 
         self.themeManager = ThemeManager()
         dataManager = DataManager(crashlytics: crashlytics,
-                                  plistReader: PListReader(),
-                                  restClient: restClient,
-                                  graphqlClient: nil,
-                                  mockNetworkClient: nil)
+                                  networkManager: networkManager,
+                                  plistReader: PListReader()
+                                  )
         NavigationManager.initializeNavigationManager(crashlytics: crashlytics)
     }
 

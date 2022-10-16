@@ -16,8 +16,8 @@ extension AppInitializer {
         let dataManager = readDataManager()
         let themeManager = readThemeManager()
         
-        let localDataStore = EnvironmentSelectorDataStore(dataManager: dataManager)
-        let repository = EnvironmentSelectorRepository(localDataStore: localDataStore,
+        let environmentSelectordataManager = EnvironmentSelectorDataManager(dataManager: dataManager)
+        let repository = EnvironmentSelectorRepository(dataManager: environmentSelectordataManager,
                                                        mapper: EnvironmentDTOToDomainModelMapper())
         let usecase = EnvironmentSelectorUsecase(repository: repository)
         let state = EnvironmentSelectorViewState()

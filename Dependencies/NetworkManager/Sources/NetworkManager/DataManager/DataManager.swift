@@ -2,21 +2,20 @@ import PromiseKit
 import Core
 
 public class DataManager: DataManagerProtocol {
-    private var networkManager: NetworkManager?
+    private var networkManager: NetworkManagerProtocol?
     private var crashlytics: CrashlyticsProtocol?
-    private var plistReader: DataProviderClientProtocol?
+    private var plistReader: LocalDataReaderClientProtocol?
     
     public init(crashlytics: CrashlyticsProtocol,
-                plistReader: DataProviderClientProtocol?,
-                restClient: DataProviderClientProtocol?,
-                graphqlClient: DataProviderClientProtocol?,
-                mockNetworkClient: DataProviderClientProtocol?) {
+                networkManager: NetworkManagerProtocol,
+                plistReader: LocalDataReaderClientProtocol?
+                ) {
         self.plistReader = plistReader
         self.crashlytics = crashlytics
-        networkManager = NetworkManager(crashlytics: crashlytics,
-                                        restClient: restClient,
-                                        graphqlClient: graphqlClient,
-                                        mockNetworkClient: mockNetworkClient)
+    }
+    
+    public func setEnvironmentData(_ data: EnvironmentData) {
+        networkManager?.setEnvironmentData(data)
     }
     
     public func request<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {

@@ -11,4 +11,5 @@ import SwiftUI
 
 public protocol EnvironmentSelectorRepositoryProtocol {
     func getEnvironmentsList() -> Response<EnvironmentDomainModel>
+    func selectTheEnvironment(_ data: EnvironmentDomainData)
 }

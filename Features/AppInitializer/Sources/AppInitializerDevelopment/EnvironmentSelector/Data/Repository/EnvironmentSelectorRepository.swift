@@ -11,17 +11,17 @@ import SwiftUI
 import PromiseKit
 
 public class EnvironmentSelectorRepository: EnvironmentSelectorRepositoryProtocol {
-    private let localDataStore: EnvironmentSelectorDataStoreProtocol
+    private let dataManager: EnvironmentSelectorDataManagerProtocol
     private let mapper: DTOToDomainModelMapper
     
-    public init(localDataStore: EnvironmentSelectorDataStoreProtocol, mapper: DTOToDomainModelMapper) {
-        self.localDataStore = localDataStore
+    public init(dataManager: EnvironmentSelectorDataManagerProtocol, mapper: DTOToDomainModelMapper) {
+        self.dataManager = dataManager
         self.mapper = mapper
     }
     
     public func getEnvironmentsList() -> Response<EnvironmentDomainModel> {
         return Promise { seal in
-            localDataStore.getEnvironmentsList().done {[weak self] dto in
+            dataManager.getEnvironmentsList().done {[weak self] dto in
                 guard let weakself = self else {
                     seal.reject(DisneyError(message: "Instance is destroyed"))
                     return
@@ -36,5 +36,12 @@ public class EnvironmentSelectorRepository: EnvironmentSelectorRepositoryProtoco
                 seal.reject(error)
             }
         }
+    }
+    
+    public func selectTheEnvironment(_ data: EnvironmentDomainData) {
+        dataManager.selectTheEnvironment(EnvironmentData(name: data.name,
+                                                         unauthURL: data.unauthURL,
+                                                         authURL: data.authURL,
+                                                         crmURL: data.crmURL))
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import Core
 import PromiseKit
 
-class NetworkManager {
+public class NetworkManager: NetworkManagerProtocol {
     
     private var crashlytics: CrashlyticsProtocol?
     
@@ -17,17 +17,23 @@ class NetworkManager {
     private var graphqlClient: DataProviderClientProtocol?
     private var mockNetworkClient: DataProviderClientProtocol?
     
-    init(crashlytics: CrashlyticsProtocol,
-         restClient: DataProviderClientProtocol?,
-         graphqlClient: DataProviderClientProtocol?,
-         mockNetworkClient: DataProviderClientProtocol?) {
+    public init(crashlytics: CrashlyticsProtocol,
+                restClient: DataProviderClientProtocol?,
+                graphqlClient: DataProviderClientProtocol?,
+                mockNetworkClient: DataProviderClientProtocol?) {
         self.crashlytics = crashlytics
         self.restClient = restClient
         self.graphqlClient = graphqlClient
         self.mockNetworkClient = mockNetworkClient
     }
     
-    func executeAPIRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {
+    public func setEnvironmentData(_ data: EnvironmentData) {
+        restClient?.setEnvironmentData(data)
+        graphqlClient?.setEnvironmentData(data)
+        mockNetworkClient?.setEnvironmentData(data)
+    }
+    
+    public func executeAPIRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {
         switch request.type {
         case .REST:
             guard let client = restClient else {

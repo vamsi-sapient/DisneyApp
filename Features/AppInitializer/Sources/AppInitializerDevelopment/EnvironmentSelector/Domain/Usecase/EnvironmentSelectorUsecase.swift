@@ -20,7 +20,7 @@ public class EnvironmentSelectorUsecase: EnvironmentSelectorUsecaseProtocol {
         return repository.getEnvironmentsList()
     }
     
-    public func selectTheEnvironment(_ index: Int) {
-        
+    public func selectTheEnvironment(_ data: EnvironmentDomainData) {
+        repository.selectTheEnvironment(data)
     }
 }

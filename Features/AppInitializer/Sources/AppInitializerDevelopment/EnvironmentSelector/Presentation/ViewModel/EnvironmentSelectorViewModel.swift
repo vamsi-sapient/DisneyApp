@@ -38,6 +38,9 @@ public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorVie
     }
     
     public func selectTheEnvironment(_ index: Int) {
-        usecase.selectTheEnvironment(index)
+        guard let environments = self.environments?.environments else {
+            return
+        }
+        usecase.selectTheEnvironment(environments[index])
     }
 }

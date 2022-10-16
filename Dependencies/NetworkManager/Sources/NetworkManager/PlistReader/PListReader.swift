@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import Core
 
-public class PListReader: DataProviderClientProtocol {
+public class PListReader: LocalDataReaderClientProtocol {
     
     public init() {
         

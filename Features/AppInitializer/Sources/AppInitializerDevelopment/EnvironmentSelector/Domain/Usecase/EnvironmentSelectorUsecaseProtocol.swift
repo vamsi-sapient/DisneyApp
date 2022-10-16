@@ -11,5 +11,5 @@ import SwiftUI
 
 public protocol EnvironmentSelectorUsecaseProtocol {
     func getEnvironmentsList() -> Response<EnvironmentDomainModel>
-    func selectTheEnvironment(_ index: Int)
+    func selectTheEnvironment(_ data: EnvironmentDomainData)
 }
