@@ -24,18 +24,18 @@ public class DIContainer {
         DIContainer.shared.dependencyProviders[moduleName] = provider
     }
     
-    public class func provideViewModelAndState(moduleName: String, screenName: String) -> (BaseViewModel?, BaseStateObject?, BaseStateObject?) {
+    public class func provideViewModelAndState(moduleName: String, screenName: String) -> (BaseViewModel?, BaseStateObject?) {
         guard let provider = DIContainer.shared.dependencyProviders[moduleName] else {
             DIContainer.shared.crashlytics?.recordTrace("Could not find the module 'ViewModel/State' provider")
-            return (nil, nil, nil)
+            return (nil, nil)
         }
         
-        let (viewModel, state, result) = provider.provideViewModelAndState(screenName: screenName)
+        let (viewModel, state) = provider.provideViewModelAndState(screenName: screenName)
         
         guard let viewModel = viewModel, let state = state else {
             DIContainer.shared.crashlytics?.recordTrace("Could not find get the 'ViewModel/State' for the screen")
-            return (nil, nil, nil)
+            return (nil, nil)
         }
-        return (viewModel, state, result)
+        return (viewModel, state)
     }
 }

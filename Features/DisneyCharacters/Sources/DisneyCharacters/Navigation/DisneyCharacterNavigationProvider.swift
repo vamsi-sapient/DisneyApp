@@ -22,7 +22,7 @@ public class DisneyCharacterNavigationProvider: NavigationProviderProtocol {
     }
     
     public func screen(for screenIdentifier: String) -> AnyView? {
-        let (viewModel, state, result) = DIContainer.provideViewModelAndState(moduleName: ModuleNames.disneyCharacters.rawValue,
+        let (viewModel, state) = DIContainer.provideViewModelAndState(moduleName: ModuleNames.disneyCharacters.rawValue,
                                                                               screenName: screenIdentifier)
         
         var view: any View

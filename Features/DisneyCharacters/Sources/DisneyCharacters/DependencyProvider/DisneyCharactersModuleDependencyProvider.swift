@@ -17,7 +17,7 @@ public class DisneyCharactersModuleDependencyProvider: ModuleDependencyProviderP
         self.dataManager = dataManager
     }
     
-    public func provideViewModelAndState(screenName: String) -> (BaseViewModel?, BaseStateObject?, BaseStateObject?) {
+    public func provideViewModelAndState(screenName: String) -> (BaseViewModel?, BaseStateObject?) {
         
         switch screenName {
         case SharedScreenNames.characterListView.rawValue:
@@ -29,14 +29,14 @@ public class DisneyCharactersModuleDependencyProvider: ModuleDependencyProviderP
             
             let viewModel = CharacterListViewModel(usecase: usecase, state: state)
             
-            return (viewModel, state, nil)
+            return (viewModel, state)
             
         default:
             let name = DisneyCharactersScreenConstants(rawValue: screenName)
             
             switch (name) {
             default:
-                return (nil, nil, nil)
+                return (nil, nil)
             }
         }
     }

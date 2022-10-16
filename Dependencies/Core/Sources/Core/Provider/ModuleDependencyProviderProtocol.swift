@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol ModuleDependencyProviderProtocol {
-    func provideViewModelAndState(screenName: String) -> (BaseViewModel?, BaseStateObject?, BaseStateObject?)
+    func provideViewModelAndState(screenName: String) -> (BaseViewModel?, BaseStateObject?)
 }
