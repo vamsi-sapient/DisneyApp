@@ -13,4 +13,11 @@ public struct EnvironmentData {
     let unauthURL: String?
     let authURL: String
     let crmURL: String?
+    
+    public init(name: String, unauthURL: String?, authURL: String, crmURL: String?) {
+        self.name = name
+        self.unauthURL = unauthURL
+        self.authURL = authURL
+        self.crmURL = crmURL
+    }
 }

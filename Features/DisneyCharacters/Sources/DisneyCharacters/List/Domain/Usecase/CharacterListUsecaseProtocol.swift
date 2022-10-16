@@ -9,6 +9,6 @@ import Foundation
 import Core
 import SwiftUI
 
-public protocol DisneyCharacterListViewModelProtocol: BaseViewModel {
-    
+protocol CharacterListUsecaseProtocol {
+    func getCharactersList() -> Response<CharacterListDomainModel>
 }

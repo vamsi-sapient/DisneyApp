@@ -12,7 +12,6 @@ import AppInitializer
 
 public struct EnvironmentSelectorView: View {
     @ObservedObject var state: EnvironmentSelectorViewState
-    @ObservedObject var result = EnvironmentSelectorContainerViewResult()
     
     private let initialViewIdentifier: String
     private let viewModel: EnvironmentSelectorViewModelProtocol?
@@ -31,21 +30,27 @@ public struct EnvironmentSelectorView: View {
     }
     
     public var body: some View {
-        if result.selectedEnvironmentIndex >= 0 {
-            nextScreen()
-        } else {
-            EnvironmentSelectorContainerView(environmentTitles: state.environmentTitles,
-                                             themeManager: themeManager,
-                                             result: result)
-            .navigationTitle(EnvironmentSelectorViewConstants.Strings.screenTitle)
-            .navigationBarTitleDisplayMode(.inline)
-            .accessibilityIdentifier(EnvironmentSelectorViewConstants.AccessibilityIdentifiers.view.rawValue)
+        List {
+            Section {
+                ForEach(state.environmentTitles, id: \.id) { item in
+                    NavigationLink(destination: NavigationManager.navigateTo(screenIdentifier: initialViewIdentifier)) {
+                        EnvironmentSelectorRowView(title: item.title).onTapGesture {
+                            nextScreen(item.title)
+                        }
+                    }
+                }
+            } header: {
+                Text(EnvironmentSelectorViewConstants.Strings.screenHeader)
+            }
+            .listStyle(.insetGrouped)
         }
+        .navigationTitle(EnvironmentSelectorViewConstants.Strings.screenTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .accessibilityIdentifier(EnvironmentSelectorViewConstants.AccessibilityIdentifiers.view.rawValue)
     }
     
-    private func nextScreen() -> AnyView {
-        viewModel?.selectTheEnvironment(result.selectedEnvironmentIndex)
-        return NavigationManager.navigateTo(screenIdentifier: initialViewIdentifier)
+    private func nextScreen(_ title: String) {
+        viewModel?.selectTheEnvironment(title)
     }
 }
 
@@ -53,7 +58,7 @@ struct EnvironmentSelectorContainerView_Previews: PreviewProvider {
     static var previews: some View {
         EnvironmentSelectorView(initialViewIdentifier: "",
                                 viewModel: nil,
-                                state: EnvironmentSelectorViewState(environmentTitles: ["DEV", "QA"]),
+                                state: EnvironmentSelectorViewState(environmentTitles: [EnvironmentUIModel(title: "DEV"), EnvironmentUIModel(title:"QA")]),
                                 themeManager: ThemeManager())
     }
 }

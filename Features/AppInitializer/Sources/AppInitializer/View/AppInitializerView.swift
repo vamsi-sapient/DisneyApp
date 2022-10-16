@@ -32,11 +32,15 @@ public struct AppInitializerView: View {
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeManager.colorFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil),
                                               NSAttributedString.Key.font: themeManager.uiFontFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil)
                                              ]
-
+            
+            let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+            appearance.backButtonAppearance = backButtonAppearance
+            
             // Inline appearance (standard height appearance)
             UINavigationBar.appearance().standardAppearance = appearance
             // Large Title appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            
         }
     }
 }

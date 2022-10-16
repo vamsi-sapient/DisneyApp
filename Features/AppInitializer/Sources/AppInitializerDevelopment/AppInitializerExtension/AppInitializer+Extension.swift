@@ -10,6 +10,7 @@ import AppInitializer
 import SwiftUI
 import Core
 import SharedDependencies
+import DisneyUIKit
 
 extension AppInitializer {
     public func environmentSelectorView(initialViewIdentifier: String) -> AnyView {

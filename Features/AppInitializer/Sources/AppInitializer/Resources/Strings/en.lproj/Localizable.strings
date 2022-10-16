@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Vamsi Krishna Katragadda on 11/10/2022.
+  
+*/
+"environment_selector_screen_title" = "Environment Selector";
+"select_environment" = "Please select an environment";

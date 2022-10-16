@@ -14,7 +14,7 @@ struct EnvironmentSelectorViewConstants {
     }
     
     struct Strings {
-        static let screenTitle = "environment_selector_screen_title".localized()
-        static let screenHeader = "select_environment".localized()
+        static let screenTitle = "environment_selector_screen_title".localized(bundle: Bundle.module)
+        static let screenHeader = "select_environment".localized(bundle: Bundle.module)
     }
 }

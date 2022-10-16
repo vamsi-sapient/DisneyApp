@@ -8,6 +8,6 @@
 import Foundation
 import Core
 
-public class DisneyCharacterListResult: BaseStateObject {
+class CharacterListResult: BaseStateObject {
     @Published public var clickedRowIndex = -1
 }

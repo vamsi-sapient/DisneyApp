@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct EnvironmentSelectorRowView: View {
+public struct EnvironmentSelectorRowView: View {
     private let title: String
     
-    init(title: String) {
+    public init(title: String) {
         self.title = title
     }
     
-    var body: some View {
+    public var body: some View {
         Text(title)
     }
 }

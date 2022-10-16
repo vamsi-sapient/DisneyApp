@@ -24,23 +24,28 @@ public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorVie
     public func getEnvironmentsList() {
         usecase.getEnvironmentsList().done { [weak self] data in
             self?.environments = data
-            let environmentTitles = self?.environments?.environments.map {
-                $0.name
+            var environmentTitles = [EnvironmentUIModel]()
+            self?.environments?.environments.forEach { element in
+                environmentTitles.append(EnvironmentUIModel(title: element.name.localizedUppercase))
             }
-            
-            if let environmentTitles = environmentTitles {
-                self?.state.environmentTitles = environmentTitles
-            }
+            self?.state.environmentTitles = environmentTitles
         }
         .catch { error in
             
         }
     }
     
-    public func selectTheEnvironment(_ index: Int) {
-        guard let environments = self.environments?.environments else {
+    public func selectTheEnvironment(_ title: String) {
+        guard let environments = self.environments?.environments,
+              let environment = filterEnvironment(title, environments: environments) else {
             return
         }
-        usecase.selectTheEnvironment(environments[index])
+        usecase.selectTheEnvironment(environment)
+    }
+    
+    private func filterEnvironment(_ title: String, environments: [EnvironmentDomainData]) -> EnvironmentDomainData? {
+        return environments.first {
+            title.caseInsensitiveCompare($0.name) == .orderedSame
+        }
     }
 }

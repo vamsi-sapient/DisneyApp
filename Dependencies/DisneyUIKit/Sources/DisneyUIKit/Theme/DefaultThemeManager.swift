@@ -8,17 +8,21 @@
 import Foundation
 import SwiftUI
 
-class DefaultThemeManager: ThemeManagerProtocol {
+public class DefaultThemeManager: ThemeManagerProtocol {
     
-    func colorFor(viewType: String, viewSubType: String?) -> UIColor {
+    public init() {
+        
+    }
+    
+    public func colorFor(viewType: String, viewSubType: String?) -> UIColor {
         return UIColor.black
     }
     
-    func fontFor(viewType: String, viewSubType: String?) -> Font {
+    public func fontFor(viewType: String, viewSubType: String?) -> Font {
         return Font.body
     }
     
-    func uiFontFor(viewType: String, viewSubType: String?) -> UIFont {
+    public func uiFontFor(viewType: String, viewSubType: String?) -> UIFont {
         return UIFont.systemFont(ofSize: 12)
     }
 }

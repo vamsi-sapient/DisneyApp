@@ -8,7 +8,7 @@ public struct AppInitializer {
     private let dataManager: DataManagerProtocol
     private let themeManager: ThemeManagerProtocol
 
-    public init() {
+    public init(environmentData: EnvironmentData? = nil) {
 
         let crashlytics = DefaultCrashlytics()
         let restClient = RestNetworkClient(crashlytics: crashlytics)
@@ -16,6 +16,10 @@ public struct AppInitializer {
                                             restClient: restClient,
                                             graphqlClient: nil,
                                             mockNetworkClient: nil)
+        
+        if let environmentData = environmentData {
+            networkManager.setEnvironmentData(environmentData)
+        }
 
         self.themeManager = ThemeManager()
         dataManager = DataManager(crashlytics: crashlytics,

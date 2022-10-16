@@ -18,6 +18,7 @@ public struct WelcomeContainerView: View {
                 Image(fileName)
             }
         )
+        .navigationBarHidden(true)
     }
 }
 

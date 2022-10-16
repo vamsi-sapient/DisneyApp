@@ -12,5 +12,5 @@ import SwiftUI
 public protocol EnvironmentSelectorViewModelProtocol: BaseViewModel {
     
     func getEnvironmentsList()
-    func selectTheEnvironment(_ index: Int)
+    func selectTheEnvironment(_ title: String)
 }

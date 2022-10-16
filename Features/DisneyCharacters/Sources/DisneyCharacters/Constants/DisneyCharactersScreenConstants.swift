@@ -8,5 +8,5 @@
 import Foundation
 
 public enum DisneyCharactersScreenConstants: String {
-    case listView
+    case detail
 }

@@ -9,11 +9,17 @@ import Foundation
 import Core
 
 public class EnvironmentSelectorViewState: BaseStateObject {
-    @Published var environmentTitles: [String]
+    @Published var environmentTitles: [EnvironmentUIModel]
+    @Published var selectedTitle = ""
     
-    public init(environmentTitles: [String] = [String]()) {
+    public init(environmentTitles: [EnvironmentUIModel] = [EnvironmentUIModel]()) {
         self.environmentTitles = environmentTitles
         
         super.init()
     }
+}
+
+public struct EnvironmentUIModel {
+    let title: String
+    let id = UUID()
 }

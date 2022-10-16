@@ -8,11 +8,11 @@
 import Foundation
 import Core
 
-public struct EnvironmentDTOModel: BaseDTO {
-    let environments: [EnvironmentDTOData]
+struct CharacterListDTOModel: BaseDTO {
+    let characters: [CharacterDTOData]
 }
 
-public struct EnvironmentDTOData: Codable {
+struct CharacterDTOData: Codable {
     let name: String
     let unauthURL: String?
     let authURL: String

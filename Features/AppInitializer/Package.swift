@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "AppInitializer",
+    defaultLocalization: "en",
     platforms: [.iOS("14.0"), .macOS("12.0")],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -28,10 +29,14 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "AppInitializer",
-            dependencies: ["Core", "NetworkManager", "DisneyUIKit", "SharedDependencies"]),
+            dependencies: ["Core", "NetworkManager", "DisneyUIKit", "SharedDependencies"],
+            resources: [.process("Resources")]
+        ),
         .target(
             name: "AppInitializerDevelopment",
-            dependencies: ["AppInitializer"]),
+            dependencies: ["AppInitializer"],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
             name: "AppInitializerTests",
             dependencies: ["AppInitializer"]),

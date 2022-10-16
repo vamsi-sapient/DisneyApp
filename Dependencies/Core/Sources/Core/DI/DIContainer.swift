@@ -32,7 +32,7 @@ public class DIContainer {
         
         let (viewModel, state, result) = provider.provideViewModelAndState(screenName: screenName)
         
-        guard let viewModel = viewModel, let state = state, let result = result else {
+        guard let viewModel = viewModel, let state = state else {
             DIContainer.shared.crashlytics?.recordTrace("Could not find get the 'ViewModel/State' for the screen")
             return (nil, nil, nil)
         }

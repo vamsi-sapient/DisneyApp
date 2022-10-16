@@ -23,7 +23,8 @@ struct DisneyAppApp: App {
     init() {
         appInitializer = AppInitializer()
         themeManager = appInitializer.readThemeManager()
-        registerDependencies()
+        registerDependencies(themeManager: themeManager,
+                             dataManager: appInitializer.readDataManager())
     }
     
     var body: some Scene {

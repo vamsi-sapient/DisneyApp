@@ -8,5 +8,5 @@
 import Foundation
 import Core
 
-public class DisneyCharacterListViewState: BaseStateObject {
+class CharacterListViewState: BaseStateObject {
 }

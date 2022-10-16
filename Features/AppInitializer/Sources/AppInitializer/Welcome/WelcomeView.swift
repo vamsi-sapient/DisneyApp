@@ -9,7 +9,6 @@ import SwiftUI
 import DisneyUIKit
 import SharedDependencies
 import Core
-import DisneyCharacters
 
 public struct WelcomeView: View {
     
@@ -21,7 +20,7 @@ public struct WelcomeView: View {
     
     public var body: some View {
         if result.isTimerExpired {
-            NavigationManager.navigateTo(screenIdentifier: "\(ModuleNames.disneyCharacters.rawValue)_\(DisneyCharactersScreenConstants.listView.rawValue)")
+            NavigationManager.navigateTo(screenIdentifier: "\(ModuleNames.disneyCharacters.rawValue)_\(SharedScreenNames.characterListView.rawValue)")
         } else {
             WelcomeContainerView(fileName: WelcomeViewConstants.welcomeViewFileName, result: result)
         }

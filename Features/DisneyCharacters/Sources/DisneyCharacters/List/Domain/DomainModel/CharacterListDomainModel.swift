@@ -1,5 +1,5 @@
 //
-//  EnvironmentDTOModel.swift
+//  EnvironmentDomainModel.swift
 //  DisneyApp
 //
 //  Created by Vamsi Krishna Katragadda on 13/10/2022.
@@ -8,13 +8,14 @@
 import Foundation
 import Core
 
-public struct EnvironmentDTOModel: BaseDTO {
-    let environments: [EnvironmentDTOData]
+struct CharacterListDomainModel: BaseDomainModel {
+    let characters: [CharacterDomainData]
 }
 
-public struct EnvironmentDTOData: Codable {
+struct CharacterDomainData: Codable {
     let name: String
     let unauthURL: String?
     let authURL: String
     let crmURL: String?
 }
+

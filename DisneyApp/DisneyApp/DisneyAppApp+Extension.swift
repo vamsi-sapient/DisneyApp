@@ -10,11 +10,13 @@ import Core
 import SharedDependencies
 import DisneyCharacters
 import AppInitializer
+import DisneyUIKit
 
 extension DisneyAppApp {
-    public func registerDependencies() {
+    public func registerDependencies(themeManager: ThemeManagerProtocol,
+                                     dataManager: DataManagerProtocol) {
         registerAppInitializerModule()
-        registerDisneyCharactersModule()
+        registerDisneyCharactersModule(themeManager: themeManager, dataManager: dataManager)
         NavigationManager.registerNavigationLinkProvider(featureName: ModuleNames.global.rawValue,
                                                          provider: GlobalNavigationProvider())
     }
@@ -30,10 +32,14 @@ extension DisneyAppApp {
 
 // MARK: Disney Characters Module
 extension DisneyAppApp {
-    fileprivate func registerDisneyCharactersModule() {
+    fileprivate func registerDisneyCharactersModule(themeManager: ThemeManagerProtocol,
+                                                    dataManager: DataManagerProtocol) {
+        let dependencyProvider = DisneyCharactersModuleDependencyProvider(dataManager: dataManager)
+        
         DIContainer.registerModule(moduleName: ModuleNames.disneyCharacters.rawValue,
-                                   provider: DisneyCharactersModuleDependencyProvider())
+                                   provider: dependencyProvider)
         NavigationManager.registerNavigationLinkProvider(featureName: ModuleNames.disneyCharacters.rawValue,
-                                                         provider: DisneyCharacterNavigationProvider())
+                                                         provider: DisneyCharacterNavigationProvider(themeManager: themeManager,
+                                                                                                     dependencyProvider: dependencyProvider))
     }
 }

@@ -7,25 +7,37 @@
 
 import Foundation
 import Core
+import SharedDependencies
 
 public class DisneyCharactersModuleDependencyProvider: ModuleDependencyProviderProtocol {
     
-    public init() {
-        
+    fileprivate let dataManager: DataManagerProtocol
+    
+    public init(dataManager: DataManagerProtocol) {
+        self.dataManager = dataManager
     }
     
     public func provideViewModelAndState(screenName: String) -> (BaseViewModel?, BaseStateObject?, BaseStateObject?) {
-        let name = DisneyCharactersScreenConstants(rawValue: screenName)
         
-        switch (name) {
-        case .listView:
-            let result = DisneyCharacterListResult()
-            let state = DisneyCharacterListViewState()
-            let viewModel = DisneyCharacterListViewModel(state: state, result: result)
-            return (viewModel, state, result)
+        switch screenName {
+        case SharedScreenNames.characterListView.rawValue:
+            let dataProvider = CharacterListDataManager(dataManager: dataManager)
+            let repository = CharacterListRepository(dataManager: dataProvider,
+                                                     mapper: CharacterListDTOToDomainModelMapper())
+            let usecase = CharacterListUsecase(repository: repository)
+            let state = CharacterListViewState()
             
-        case .none:
-            return (nil, nil, nil)
+            let viewModel = CharacterListViewModel(usecase: usecase, state: state)
+            
+            return (viewModel, state, nil)
+            
+        default:
+            let name = DisneyCharactersScreenConstants(rawValue: screenName)
+            
+            switch (name) {
+            default:
+                return (nil, nil, nil)
+            }
         }
     }
 }

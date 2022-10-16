@@ -8,31 +8,38 @@
 import SwiftUI
 import Core
 import SharedDependencies
+import DisneyUIKit
 
 public class DisneyCharacterNavigationProvider: NavigationProviderProtocol {
     
-    public init() {
-        
+    fileprivate let themeManager: ThemeManagerProtocol
+    fileprivate let dependencyProvider: ModuleDependencyProviderProtocol
+    
+    public init(themeManager: ThemeManagerProtocol,
+                dependencyProvider: ModuleDependencyProviderProtocol) {
+        self.themeManager = themeManager
+        self.dependencyProvider = dependencyProvider
     }
     
     public func screen(for screenIdentifier: String) -> AnyView? {
         let (viewModel, state, result) = DIContainer.provideViewModelAndState(moduleName: ModuleNames.disneyCharacters.rawValue,
                                                                               screenName: screenIdentifier)
         
-        let screenName = DisneyCharactersScreenConstants(rawValue: screenIdentifier)
-        
         var view: any View
         
-        switch screenName {
-        case .listView:
-            view = DisneyCharacterListView(viewModel: viewModel as! DisneyCharacterListViewModelProtocol,
-                                           state: state as! DisneyCharacterListViewState,
-                                           result: result as! DisneyCharacterListResult)
-            
+        switch screenIdentifier {
+        case SharedScreenNames.characterListView.rawValue:
+            view = CharacterListView(viewModel: viewModel as! CharacterListViewModel,
+                                     state: state as! CharacterListViewState,
+                                     themeManager: themeManager)
         default:
-            return nil
+            let screenName = DisneyCharactersScreenConstants(rawValue: screenIdentifier)
+            
+            switch screenName {
+            default:
+                return nil
+            }
         }
-        
         return AnyView(view)
     }
 }

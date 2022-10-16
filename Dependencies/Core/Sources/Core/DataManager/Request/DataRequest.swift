@@ -16,12 +16,12 @@ public enum NetworkRequestMethod: String {
 }
 
 public struct DataRequest {
-    let name: String
-    let type: DataRequestType
-    let method: NetworkRequestMethod
-    let path: String
-    let headers: [String: String]?
-    let body: [String: Any]?
+    public let name: String
+    public let type: DataRequestType
+    public let method: NetworkRequestMethod
+    public let path: String
+    public let headers: [String: String]?
+    public let body: [String: Any]?
     
     public init(name: String = "",
                 type: DataRequestType,
