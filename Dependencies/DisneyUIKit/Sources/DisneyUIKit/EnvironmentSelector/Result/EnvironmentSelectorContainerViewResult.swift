@@ -9,5 +9,5 @@ import Foundation
 import Core
 
 public class EnvironmentSelectorContainerViewResult: BaseStateObject {
-    @Published public var selectedEnvironmentIndex = 0
+    @Published public var selectedEnvironmentIndex = -1
 }

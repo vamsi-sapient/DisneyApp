@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42125BA228FB611A00F25BB8 /* GlobalNavigationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BA128FB611A00F25BB8 /* GlobalNavigationProvider.swift */; };
+		42125BA328FB611A00F25BB8 /* GlobalNavigationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BA128FB611A00F25BB8 /* GlobalNavigationProvider.swift */; };
+		42125BA828FB70A700F25BB8 /* DisneyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A56C6E28EF7A3800335C14 /* DisneyAppApp.swift */; };
+		42125BAC28FBE37200F25BB8 /* DisneyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BAB28FBE37200F25BB8 /* DisneyAppApp.swift */; };
+		42125BDB28FBE8FC00F25BB8 /* GlobalScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */; };
+		42125BDC28FBE8FC00F25BB8 /* GlobalScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */; };
 		424557E028F0E33F00C27B68 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 424557DF28F0E33F00C27B68 /* Core */; };
 		424557E328F0E34F00C27B68 /* SharedDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 424557E228F0E34F00C27B68 /* SharedDependencies */; };
 		424557E628F0E3D400C27B68 /* DisneyCharacters in Frameworks */ = {isa = PBXBuildFile; productRef = 424557E528F0E3D400C27B68 /* DisneyCharacters */; };
 		4252A9D228FB4F0200618978 /* DisneyAppApp+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252A9D128FB4F0200618978 /* DisneyAppApp+Extension.swift */; };
-		4252AA0928FB51B900618978 /* DisneyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252AA0828FB51B900618978 /* DisneyAppApp.swift */; };
 		4252AA1228FB538F00618978 /* DisneyAppApp+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252A9D128FB4F0200618978 /* DisneyAppApp+Extension.swift */; };
-		4252AA1328FB538F00618978 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A56C7028EF7A3800335C14 /* WelcomeView.swift */; };
-		4252AA1628FB538F00618978 /* DisneyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A56C6E28EF7A3800335C14 /* DisneyAppApp.swift */; };
-		4252AA1728FB538F00618978 /* WelcomeViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C495D28F446EE006BA23D /* WelcomeViewConstants.swift */; };
 		4252AA1928FB538F00618978 /* SharedDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA0C28FB538F00618978 /* SharedDependencies */; };
 		4252AA1B28FB538F00618978 /* DisneyUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA0E28FB538F00618978 /* DisneyUIKit */; };
 		4252AA1C28FB538F00618978 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA0F28FB538F00618978 /* NetworkManager */; };
@@ -41,11 +43,9 @@
 		4252AA3928FB53A900618978 /* AppInitializer in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA3828FB53A900618978 /* AppInitializer */; };
 		4252AA3B28FB53B600618978 /* AppInitializerDevelopment in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA3A28FB53B600618978 /* AppInitializerDevelopment */; };
 		429C495B28F0FDEF006BA23D /* DisneyUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 429C495A28F0FDEF006BA23D /* DisneyUIKit */; };
-		429C495E28F446EE006BA23D /* WelcomeViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C495D28F446EE006BA23D /* WelcomeViewConstants.swift */; };
 		429C496328F4AD65006BA23D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429C496228F4AD65006BA23D /* Environments.plist */; };
 		429C496528F4E368006BA23D /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 429C496428F4E368006BA23D /* NetworkManager */; };
 		429C496828F724CD006BA23D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429C496728F724CD006BA23D /* Colors.xcassets */; };
-		42A56C7128EF7A3800335C14 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A56C7028EF7A3800335C14 /* WelcomeView.swift */; };
 		42A56C7328EF7A3A00335C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A56C7228EF7A3A00335C14 /* Assets.xcassets */; };
 		42A56C7628EF7A3A00335C14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A56C7528EF7A3A00335C14 /* Preview Assets.xcassets */; };
 		42A56C8028EF7A3A00335C14 /* DisneyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A56C7F28EF7A3A00335C14 /* DisneyAppTests.swift */; };
@@ -84,23 +84,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42125BA128FB611A00F25BB8 /* GlobalNavigationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalNavigationProvider.swift; sourceTree = "<group>"; };
+		42125BAB28FBE37200F25BB8 /* DisneyAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisneyAppApp.swift; sourceTree = "<group>"; };
+		42125BD728FBE48F00F25BB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42125BD828FBE49E00F25BB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalScreenConstants.swift; sourceTree = "<group>"; };
 		424557DE28F0E30000C27B68 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../Dependencies/Core; sourceTree = "<group>"; };
 		424557E128F0E34700C27B68 /* SharedDependencies */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedDependencies; path = ../Dependencies/SharedDependencies; sourceTree = "<group>"; };
 		4252A9CD28F97E1E00618978 /* DisneyCharacters */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DisneyCharacters; path = ../Features/DisneyCharacters; sourceTree = "<group>"; };
 		4252A9CE28F9838600618978 /* AppInitializer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AppInitializer; path = ../Features/AppInitializer; sourceTree = "<group>"; };
 		4252A9D128FB4F0200618978 /* DisneyAppApp+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisneyAppApp+Extension.swift"; sourceTree = "<group>"; };
-		4252A9FD28FB4FA900618978 /* DisneyApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DisneyApp copy-Info.plist"; path = "/Users/vamkatra/Documents/Lloyds/Assignment/DisneyApp/DisneyApp copy-Info.plist"; sourceTree = "<absolute>"; };
-		4252AA0828FB51B900618978 /* DisneyAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisneyAppApp.swift; sourceTree = "<group>"; };
 		4252AA3628FB538F00618978 /* DisneyAppProduction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisneyAppProduction.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4252AA3728FB538F00618978 /* DisneyApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DisneyApp copy-Info.plist"; path = "/Users/vamkatra/Documents/Lloyds/Assignment/DisneyApp/DisneyApp copy-Info.plist"; sourceTree = "<absolute>"; };
 		429C495928F0FDBE006BA23D /* DisneyUIKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DisneyUIKit; path = ../Dependencies/DisneyUIKit; sourceTree = "<group>"; };
-		429C495D28F446EE006BA23D /* WelcomeViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewConstants.swift; sourceTree = "<group>"; };
 		429C495F28F4A829006BA23D /* NetworkManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = NetworkManager; path = ../Dependencies/NetworkManager; sourceTree = "<group>"; };
 		429C496228F4AD65006BA23D /* Environments.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		429C496728F724CD006BA23D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		42A56C6B28EF7A3800335C14 /* DisneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A56C6E28EF7A3800335C14 /* DisneyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyAppApp.swift; sourceTree = "<group>"; };
-		42A56C7028EF7A3800335C14 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		42A56C7228EF7A3A00335C14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42A56C7528EF7A3A00335C14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42A56C7B28EF7A3A00335C14 /* DisneyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisneyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,7 +121,6 @@
 		42DC7D6028F8089D003A18C7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		42DC7D6128F8089D003A18C7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		42DC7D6228F8089D003A18C7 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
-		42DC7D7028F80A06003A18C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,29 +167,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4252AA0628FB517F00618978 /* Production */ = {
+		42125BA028FB611A00F25BB8 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				42A56C6E28EF7A3800335C14 /* DisneyAppApp.swift */,
+				42125BA128FB611A00F25BB8 /* GlobalNavigationProvider.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		42125BA928FBE33600F25BB8 /* Production */ = {
+			isa = PBXGroup;
+			children = (
+				42125BD828FBE49E00F25BB8 /* Info.plist */,
+				42125BAB28FBE37200F25BB8 /* DisneyAppApp.swift */,
 			);
 			path = Production;
 			sourceTree = "<group>";
 		};
-		4252AA0728FB518D00618978 /* Development */ = {
+		42125BAA28FBE33C00F25BB8 /* Development */ = {
 			isa = PBXGroup;
 			children = (
-				4252AA0828FB51B900618978 /* DisneyAppApp.swift */,
+				42125BD728FBE48F00F25BB8 /* Info.plist */,
+				42A56C6E28EF7A3800335C14 /* DisneyAppApp.swift */,
 			);
 			path = Development;
 			sourceTree = "<group>";
 		};
-		429C495C28F0FE0A006BA23D /* Welcome */ = {
+		42125BD928FBE8FC00F25BB8 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				42A56C7028EF7A3800335C14 /* WelcomeView.swift */,
-				429C495D28F446EE006BA23D /* WelcomeViewConstants.swift */,
+				42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */,
 			);
-			path = Welcome;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		429C496028F4AD02006BA23D /* Environment */ = {
@@ -233,8 +241,6 @@
 				42A56C8828EF7A3A00335C14 /* DisneyAppUITests */,
 				42A56C6C28EF7A3800335C14 /* Products */,
 				42A56C9928EF7A6A00335C14 /* Frameworks */,
-				4252A9FD28FB4FA900618978 /* DisneyApp copy-Info.plist */,
-				4252AA3728FB538F00618978 /* DisneyApp copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,12 +258,12 @@
 		42A56C6D28EF7A3800335C14 /* DisneyApp */ = {
 			isa = PBXGroup;
 			children = (
-				4252AA0728FB518D00618978 /* Development */,
-				4252AA0628FB517F00618978 /* Production */,
-				429C495C28F0FE0A006BA23D /* Welcome */,
-				42DC7D7028F80A06003A18C7 /* Info.plist */,
-				42A56C7228EF7A3A00335C14 /* Assets.xcassets */,
+				42125BAA28FBE33C00F25BB8 /* Development */,
+				42125BA928FBE33600F25BB8 /* Production */,
+				42125BA028FB611A00F25BB8 /* Navigation */,
+				42125BD928FBE8FC00F25BB8 /* Constants */,
 				4252A9D128FB4F0200618978 /* DisneyAppApp+Extension.swift */,
+				42A56C7228EF7A3A00335C14 /* Assets.xcassets */,
 				429C496628F72499006BA23D /* Resources */,
 				42A56C7428EF7A3A00335C14 /* Preview Content */,
 			);
@@ -527,10 +533,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42125BDC28FBE8FC00F25BB8 /* GlobalScreenConstants.swift in Sources */,
+				42125BA328FB611A00F25BB8 /* GlobalNavigationProvider.swift in Sources */,
 				4252AA1228FB538F00618978 /* DisneyAppApp+Extension.swift in Sources */,
-				4252AA1328FB538F00618978 /* WelcomeView.swift in Sources */,
-				4252AA1628FB538F00618978 /* DisneyAppApp.swift in Sources */,
-				4252AA1728FB538F00618978 /* WelcomeViewConstants.swift in Sources */,
+				42125BAC28FBE37200F25BB8 /* DisneyAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,10 +544,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42125BDB28FBE8FC00F25BB8 /* GlobalScreenConstants.swift in Sources */,
+				42125BA228FB611A00F25BB8 /* GlobalNavigationProvider.swift in Sources */,
 				4252A9D228FB4F0200618978 /* DisneyAppApp+Extension.swift in Sources */,
-				42A56C7128EF7A3800335C14 /* WelcomeView.swift in Sources */,
-				4252AA0928FB51B900618978 /* DisneyAppApp.swift in Sources */,
-				429C495E28F446EE006BA23D /* WelcomeViewConstants.swift in Sources */,
+				42125BA828FB70A700F25BB8 /* DisneyAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,8 +593,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DisneyApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					Development/DisneyAppApp.swift,
+					Development/Info.plist,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "DisneyApp copy-Info.plist";
+				INFOPLIST_FILE = DisneyApp/Production/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -616,8 +626,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DisneyApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					Development/DisneyAppApp.swift,
+					Development/Info.plist,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "DisneyApp copy-Info.plist";
+				INFOPLIST_FILE = DisneyApp/Production/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -761,8 +775,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DisneyApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					Production/DisneyAppApp.swift,
+					Production/Info.plist,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DisneyApp/Info.plist;
+				INFOPLIST_FILE = DisneyApp/Development/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -790,8 +808,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DisneyApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					Production/DisneyAppApp.swift,
+					Production/Info.plist,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DisneyApp/Info.plist;
+				INFOPLIST_FILE = DisneyApp/Development/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

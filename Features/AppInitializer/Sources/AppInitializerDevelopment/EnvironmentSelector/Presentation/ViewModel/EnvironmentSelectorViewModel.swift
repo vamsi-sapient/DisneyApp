@@ -10,7 +10,7 @@ import Core
 import SwiftUI
 
 public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorViewModelProtocol {
-    private let state: EnvironmentSelectorViewState
+    private var state: EnvironmentSelectorViewState
     private let usecase: EnvironmentSelectorUsecaseProtocol
     private var environments: EnvironmentDomainModel?
     
@@ -37,7 +37,7 @@ public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorVie
         }
     }
     
-    func filterTitles() {
-        
+    public func selectTheEnvironment(_ index: Int) {
+        usecase.selectTheEnvironment(index)
     }
 }

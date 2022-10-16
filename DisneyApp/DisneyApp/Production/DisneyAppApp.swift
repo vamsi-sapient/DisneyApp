@@ -11,20 +11,25 @@ import SharedDependencies
 import DisneyCharacters
 import AppInitializer
 import NetworkManager
+import DisneyUIKit
 
 @main
 struct DisneyAppApp: App {
     
     fileprivate let appInitializer: AppInitializer
+    fileprivate let themeManager: ThemeManagerProtocol
     
     init() {
-        appInitializer = AppInitializer(themeManager: ThemeManager())
+        appInitializer = AppInitializer()
+        themeManager = appInitializer.readThemeManager()
         registerDependencies()
     }
     
     var body: some Scene {
         WindowGroup {
-            appInitializer.body(WelcomeView())
+            AppInitializerView(themeManager: themeManager,
+                               initialView: AnyView(WelcomeView())
+                              )
         }
     }
 }

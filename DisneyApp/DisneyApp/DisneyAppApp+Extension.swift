@@ -9,10 +9,22 @@ import Foundation
 import Core
 import SharedDependencies
 import DisneyCharacters
+import AppInitializer
 
 extension DisneyAppApp {
     public func registerDependencies() {
+        registerAppInitializerModule()
         registerDisneyCharactersModule()
+        NavigationManager.registerNavigationLinkProvider(featureName: ModuleNames.global.rawValue,
+                                                         provider: GlobalNavigationProvider())
+    }
+}
+
+// MARK: App Initializer Module
+extension DisneyAppApp {
+    fileprivate func registerAppInitializerModule() {
+        NavigationManager.registerNavigationLinkProvider(featureName: ModuleNames.appInitializer.rawValue,
+                                                         provider: AppInitializerNavigationProvider())
     }
 }
 

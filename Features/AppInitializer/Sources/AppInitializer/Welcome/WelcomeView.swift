@@ -11,11 +11,15 @@ import SharedDependencies
 import Core
 import DisneyCharacters
 
-struct WelcomeView: View {
+public struct WelcomeView: View {
     
     @ObservedObject var result = WelcomeContainerViewResult()
     
-    var body: some View {
+    public init() {
+        
+    }
+    
+    public var body: some View {
         if result.isTimerExpired {
             NavigationManager.navigateTo(screenIdentifier: "\(ModuleNames.disneyCharacters.rawValue)_\(DisneyCharactersScreenConstants.listView.rawValue)")
         } else {

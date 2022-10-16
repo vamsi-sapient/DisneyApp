@@ -1,28 +1,26 @@
+//
+//  SwiftUIView.swift
+//  
+//
+//  Created by Vamsi Krishna Katragadda on 16/10/2022.
+//
+
 import SwiftUI
 import Core
-import NetworkManager
 import DisneyUIKit
 
-public struct AppInitializer {
+public struct AppInitializerView: View {
     
-    private let dataManager: DataManagerProtocol
     private let themeManager: ThemeManagerProtocol
+    private let initialView: AnyView
     
-    public init(themeManager: ThemeManagerProtocol) {
-        
-        let crashlytics = DefaultCrashlytics()
-        let restClient = RestNetworkClient(crashlytics: crashlytics)
-        
+    public init(themeManager: ThemeManagerProtocol,
+                initialView: AnyView) {
         self.themeManager = themeManager
-        dataManager = DataManager(crashlytics: crashlytics,
-                                  plistReader: PListReader(),
-                                  restClient: restClient,
-                                  graphqlClient: nil,
-                                  mockNetworkClient: nil)
-        NavigationManager.initializeNavigationManager(crashlytics: crashlytics)
+        self.initialView = initialView
     }
     
-    public func body(_ initialView: some View) -> some View {
+    public var body: some View {
         return NavigationView {
             initialView
         }
@@ -41,12 +39,12 @@ public struct AppInitializer {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
     }
-    
-    public func readDataManager() -> DataManagerProtocol {
-        return dataManager
-    }
-    
-    public func readThemeManager() -> ThemeManagerProtocol {
-        return themeManager
+}
+
+struct AppInitializerView_Previews: PreviewProvider {
+    static var previews: some View {
+        AppInitializerView(themeManager: ThemeManager(),
+                           initialView: AnyView(EmptyView())
+                          )
     }
 }

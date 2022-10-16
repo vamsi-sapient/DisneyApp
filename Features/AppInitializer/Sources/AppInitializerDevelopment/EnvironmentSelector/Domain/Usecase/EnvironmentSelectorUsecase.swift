@@ -19,4 +19,8 @@ public class EnvironmentSelectorUsecase: EnvironmentSelectorUsecaseProtocol {
     public func getEnvironmentsList() -> Response<EnvironmentDomainModel> {
         return repository.getEnvironmentsList()
     }
+    
+    public func selectTheEnvironment(_ index: Int) {
+        
+    }
 }

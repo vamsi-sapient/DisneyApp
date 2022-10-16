@@ -9,31 +9,27 @@ import SwiftUI
 import Core
 import SharedDependencies
 import DisneyCharacters
-import AppInitializerDevelopment
 import AppInitializer
+import AppInitializerDevelopment
 import NetworkManager
+import DisneyUIKit
 
 @main
 struct DisneyAppApp: App {
     
     fileprivate let appInitializer: AppInitializer
+    fileprivate let themeManager: ThemeManagerProtocol
     
     init() {
-        appInitializer = AppInitializer(themeManager: ThemeManager())
+        appInitializer = AppInitializer()
+        themeManager = appInitializer.readThemeManager()
         registerDependencies()
     }
     
     var body: some Scene {
         WindowGroup {
-            let localDataStore = EnvironmentSelectorDataStore(dataManager: appInitializer.readDataManager())
-            let repository = EnvironmentSelectorRepository(localDataStore: localDataStore,
-                                                           mapper: EnvironmentDTOToDomainModelMapper())
-            let usecase = EnvironmentSelectorUsecase(repository: repository)
-            let state = EnvironmentSelectorViewState()
-            let view = EnvironmentSelectorView(viewModel: EnvironmentSelectorViewModel(usecase: usecase, state: state),
-                                    state: state,
-                                               themeManager: appInitializer.readThemeManager())
-            appInitializer.body(view)
+            let view = appInitializer.environmentSelectorView(initialViewIdentifier: "\(ModuleNames.appInitializer.rawValue)_\(AppInitializerScreenConstants.welcome.rawValue)")
+            AppInitializerView(themeManager: themeManager, initialView: view)
         }
     }
 }
