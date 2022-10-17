@@ -16,7 +16,7 @@ public enum NetworkRequestMethod: String {
 }
 
 public enum NetworkAPIType: String {
-    case AUTH, UNAUTH, CRM
+    case AUTH, UNAUTH, CRM, CUSTOM
 }
 
 public struct DataRequest {

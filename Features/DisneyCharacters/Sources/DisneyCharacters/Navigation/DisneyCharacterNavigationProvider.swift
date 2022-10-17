@@ -21,7 +21,7 @@ public class DisneyCharacterNavigationProvider: NavigationProviderProtocol {
         self.dependencyProvider = dependencyProvider
     }
     
-    public func screen(for screenIdentifier: String) -> AnyView? {
+    public func screen(for screenIdentifier: String, params: NavigationParams?) -> AnyView? {
         let (viewModel, state) = DIContainer.provideViewModelAndState(moduleName: ModuleNames.disneyCharacters.rawValue,
                                                                               screenName: screenIdentifier)
         
@@ -33,12 +33,26 @@ public class DisneyCharacterNavigationProvider: NavigationProviderProtocol {
                                      state: state as! CharacterListViewState,
                                      themeManager: themeManager)
         default:
-            let screenName = DisneyCharactersScreenConstants(rawValue: screenIdentifier)
-            
-            switch screenName {
-            default:
-                return nil
-            }
+            return screenForDisneyCharactersModule(for: screenIdentifier, params: params)
+        }
+        return AnyView(view)
+    }
+    
+    private func screenForDisneyCharactersModule(for screenIdentifier: String, params: NavigationParams?) -> AnyView? {
+        let (viewModel, state) = DIContainer.provideViewModelAndState(moduleName: ModuleNames.disneyCharacters.rawValue,
+                                                                              screenName: screenIdentifier)
+        
+        let screenName = DisneyCharactersScreenConstants(rawValue: screenIdentifier)
+        var view: any View
+        
+        switch screenName {
+        case .detail:
+            view = CharacterDetailView(viewModel: viewModel as! CharacterDetailViewModel,
+                                       state: state as! CharacterDetailViewState,
+                                       themeManager: themeManager,
+                                       params: params as! CharacterDetailNavigationParams)
+        default:
+            return nil
         }
         return AnyView(view)
     }

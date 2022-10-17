@@ -15,7 +15,7 @@ public class AppInitializerNavigationProvider: NavigationProviderProtocol {
         
     }
     
-    public func screen(for screenIdentifier: String) -> AnyView? {
+    public func screen(for screenIdentifier: String, params: NavigationParams?) -> AnyView? {
         let screenName = AppInitializerScreenConstants(rawValue: screenIdentifier)
         
         var view: any View

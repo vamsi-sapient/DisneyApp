@@ -12,7 +12,7 @@ import AppInitializer
 
 class GlobalNavigationProvider: NavigationProviderProtocol {
     
-    func screen(for screenIdentifier: String) -> AnyView? {
+    func screen(for screenIdentifier: String, params: NavigationParams?) -> AnyView? {
         let screenName = GlobalScreenConstants(rawValue: screenIdentifier)
         
         switch screenName {

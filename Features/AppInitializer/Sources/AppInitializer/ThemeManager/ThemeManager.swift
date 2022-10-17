@@ -15,7 +15,7 @@ public struct ThemeManager: ThemeManagerProtocol {
         
     }
     
-    public func colorFor(viewType: String, viewSubType: String?) -> UIColor {
+    public func uiColorFor(viewType: String, viewSubType: String?) -> UIColor {
         let type = ViewType(rawValue: viewType)
         var color: UIColor?
         switch type {
@@ -33,28 +33,14 @@ public struct ThemeManager: ThemeManagerProtocol {
         case .imagePlaceHolder:
             color = UIColor(named: DisneyColors.grey)
             
+        case .activityIndicator:
+            color = UIColor(named: DisneyColors.green)
+            
         default:
             return UIColor.clear
         }
         
         return color ?? UIColor.clear
-    }
-    
-    public func fontFor(viewType: String, viewSubType: String?) -> Font {
-        let type = ViewType(rawValue: viewType)
-        switch type {
-        case .navigationBarTitle:
-            return Font.custom("Roboto-Bold", size: 48)
-            
-        case .button:
-            guard let viewSubType = viewSubType else {
-                return Font.body
-            }
-            return fontForButton(ButtonType(rawValue: viewSubType) ?? ButtonType.primary)
-            
-        default:
-            return Font.body
-        }
     }
     
     public func uiFontFor(viewType: String, viewSubType: String?) -> UIFont {
@@ -64,6 +50,12 @@ public struct ThemeManager: ThemeManagerProtocol {
         switch type {
         case .navigationBarTitle:
             return UIFont(name: "Roboto-Bold", size: 24) ?? defaultFont
+            
+        case .button:
+            guard let viewSubType = viewSubType else {
+                return defaultFont
+            }
+            return fontForButton(ButtonType(rawValue: viewSubType) ?? ButtonType.primary)
             
         default:
             return defaultFont
@@ -87,10 +79,10 @@ extension ThemeManager {
         return color ?? UIColor.clear
     }
     
-    fileprivate func fontForButton(_ viewSubType: ButtonType) -> Font {
+    fileprivate func fontForButton(_ viewSubType: ButtonType) -> UIFont {
         switch viewSubType {
         default:
-            return Font.body
+            return UIFont.systemFont(ofSize: 14)
         }
     }
 }

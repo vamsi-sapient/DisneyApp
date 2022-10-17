@@ -14,15 +14,11 @@ public class DefaultThemeManager: ThemeManagerProtocol {
         
     }
     
-    public func colorFor(viewType: String, viewSubType: String?) -> UIColor {
+    public func uiColorFor(viewType: String, viewSubType: String?) -> UIColor {
         return UIColor.black
     }
     
-    public func fontFor(viewType: String, viewSubType: String?) -> Font {
-        return Font.body
-    }
-    
     public func uiFontFor(viewType: String, viewSubType: String?) -> UIFont {
-        return UIFont.systemFont(ofSize: 12)
+        return UIFont.systemFont(ofSize: 14)
     }
 }

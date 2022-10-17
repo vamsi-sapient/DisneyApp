@@ -32,9 +32,9 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
                 seal.reject(DisneyError(message: "Instance is destroyed"))
                 return
             }
-            let baseURL = environment.authURL
             
-            guard let url = URL(string: baseURL + request.path) else {
+            
+            guard let url = URL(string: servicePath(environment, request: request)) else {
                 weakself.crashlytics.recordError("Could not convert the string to URL")
                 seal.reject(DisneyError(message: "Could not convert the string to URL"))
                 return
@@ -91,6 +91,26 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
             }
             task.resume()
         }
+    }
+    
+    private func servicePath(_ environment: EnvironmentData, request: DataRequest) -> String {
+        var baseURL = ""
+        
+        switch request.apiType {
+        case .AUTH:
+            baseURL = environment.authURL
+            
+        case .CRM:
+            baseURL = environment.crmURL ?? environment.unauthURL
+            
+        case .CUSTOM:
+            baseURL = ""
+            
+        default:
+            baseURL = environment.unauthURL
+        }
+        
+        return baseURL + request.path
     }
 }
 

@@ -19,6 +19,8 @@
 			<string>dev</string>
 			<key>authURL</key>
 			<string></string>
+			<key>unauthURL</key>
+			<string></string>
 		</dict>
 	</array>
 </dict>

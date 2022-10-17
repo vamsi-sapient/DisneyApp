@@ -24,11 +24,11 @@ public final class NavigationManager: NavigationManagerProtocol {
         NavigationManager.shared.navigationLinkProviders[featureName] = provider
     }
     
-    public static func navigateTo(screenIdentifier: String) -> AnyView {
-        return NavigationManager.shared.screen(with: screenIdentifier)
+    public static func navigateTo(screenIdentifier: String, params: NavigationParams? = nil) -> AnyView {
+        return NavigationManager.shared.screen(with: screenIdentifier, params: params)
     }
     
-    private func screen(with identifier: String) -> AnyView {
+    private func screen(with identifier: String, params: NavigationParams?) -> AnyView {
         let body = AnyView(EmptyView())
         
         let stringArray = identifier.split(separator: "_")
@@ -50,7 +50,7 @@ public final class NavigationManager: NavigationManagerProtocol {
             return body
         }
         
-        guard let view = provider.screen(for: screen) else {
+        guard let view = provider.screen(for: screen, params: params) else {
             crashlytics?.recordError("Cannot find the Screen")
             return body
         }

@@ -8,5 +8,5 @@
 import SwiftUI
 
 public protocol NavigationProviderProtocol {
-    func screen(for screenIdentifier: String) -> AnyView?
+    func screen(for screenIdentifier: String, params: NavigationParams?) -> AnyView?
 }

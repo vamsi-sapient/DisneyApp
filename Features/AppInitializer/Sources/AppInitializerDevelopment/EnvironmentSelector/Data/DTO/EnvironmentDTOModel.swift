@@ -14,7 +14,7 @@ public struct EnvironmentDTOModel: BaseDTO {
 
 public struct EnvironmentDTOData: Codable {
     let name: String
-    let unauthURL: String?
+    let unauthURL: String
     let authURL: String
     let crmURL: String?
 }

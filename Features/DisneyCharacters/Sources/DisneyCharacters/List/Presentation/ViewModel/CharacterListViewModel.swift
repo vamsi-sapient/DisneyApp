@@ -19,7 +19,10 @@ class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
     }
     
     func getCharactersList() {
+        state.showProgress = true
         usecase.getCharactersList().done { [weak self] data in
+            self?.state.showProgress = false
+            
             var characters = [CharacterUIData]()
             
             data.characters.forEach { item in
@@ -37,5 +40,12 @@ class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
         }.catch { error in
             
         }
+    }
+    
+    func selectCharacter(_ item: CharacterUIData) {
+        guard let url = item.url else {
+            return
+        }
+        state.selectedItemURL = url
     }
 }

@@ -31,13 +31,31 @@ public class DisneyCharactersModuleDependencyProvider: ModuleDependencyProviderP
             
             return (viewModel, state)
             
-        default:
-            let name = DisneyCharactersScreenConstants(rawValue: screenName)
             
-            switch (name) {
-            default:
-                return (nil, nil)
-            }
+        default:
+            let (viewModel, state) = provideViewModelAndStateForDisneyCharactersModule(screenName: screenName)
+            return (viewModel, state)
+        }
+    }
+    
+    private func provideViewModelAndStateForDisneyCharactersModule(screenName: String) -> (BaseViewModel?, BaseStateObject?) {
+        let name = DisneyCharactersScreenConstants(rawValue: screenName)
+        
+        switch name {
+        case .detail:
+            let dataProvider = CharacterDetailDataManager(dataManager: dataManager)
+            let repository = CharacterDetailRepository(dataManager: dataProvider,
+                                                       mapper: CharacterDetailDTOToDomainModelMapper())
+            let usecase = CharacterDetailUsecase(repository: repository)
+            let state = CharacterDetailViewState()
+            
+            let viewModel = CharacterDetailViewModel(usecase: usecase, state: state)
+            
+            return (viewModel, state)
+            
+            
+        default:
+            return (nil, nil)
         }
     }
 }

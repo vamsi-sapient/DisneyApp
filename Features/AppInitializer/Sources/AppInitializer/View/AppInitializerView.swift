@@ -27,9 +27,9 @@ public struct AppInitializerView: View {
         .onAppear {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            appearance.backgroundColor = themeManager.colorFor(viewType: ViewType.navigationBar.rawValue,
+            appearance.backgroundColor = themeManager.uiColorFor(viewType: ViewType.navigationBar.rawValue,
                                                                       viewSubType: nil)
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeManager.colorFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil),
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeManager.uiColorFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil),
                                               NSAttributedString.Key.font: themeManager.uiFontFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil)
                                              ]
             

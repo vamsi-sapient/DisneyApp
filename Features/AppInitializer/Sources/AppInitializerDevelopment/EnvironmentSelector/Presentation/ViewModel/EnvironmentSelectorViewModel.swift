@@ -22,7 +22,10 @@ public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorVie
     }
     
     public func getEnvironmentsList() {
+        state.showProgress = true
+        
         usecase.getEnvironmentsList().done { [weak self] data in
+            self?.state.showProgress = false
             self?.environments = data
             var environmentTitles = [EnvironmentUIModel]()
             self?.environments?.environments.forEach { element in

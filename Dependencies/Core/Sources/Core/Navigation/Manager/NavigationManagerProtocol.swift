@@ -11,5 +11,5 @@ import SwiftUI
 public protocol NavigationManagerProtocol {
     static func initializeNavigationManager(crashlytics: CrashlyticsProtocol)
     static func registerNavigationLinkProvider(featureName: String, provider: NavigationProviderProtocol)
-    static func navigateTo(screenIdentifier: String) -> AnyView
+    static func navigateTo(screenIdentifier: String, params: NavigationParams?) -> AnyView
 }

@@ -30,24 +30,28 @@ public struct EnvironmentSelectorView: View {
     }
     
     public var body: some View {
-        if state.selectedTitle.isEmpty {
-            List {
-                Section {
-                    ForEach(state.environmentTitles, id: \.id) { item in
-                        EnvironmentSelectorRowView(title: item.title).onTapGesture {
-                            nextScreen(item.title)
-                        }
-                    }
-                } header: {
-                    Text(EnvironmentSelectorViewConstants.Strings.screenHeader)
-                }
-                .listStyle(.insetGrouped)
-            }
-            .navigationTitle(EnvironmentSelectorViewConstants.Strings.screenTitle)
-            .navigationBarTitleDisplayMode(.inline)
-            .accessibilityIdentifier(EnvironmentSelectorViewConstants.AccessibilityIdentifiers.view.rawValue)
+        if state.showProgress {
+            ActivityIndicatorView(themeManager: themeManager)
         } else {
-            NavigationManager.navigateTo(screenIdentifier: initialViewIdentifier)
+            if state.selectedTitle.isEmpty {
+                List {
+                    Section {
+                        ForEach(state.environmentTitles, id: \.id) { item in
+                            EnvironmentSelectorRowView(title: item.title).onTapGesture {
+                                nextScreen(item.title)
+                            }
+                        }
+                    } header: {
+                        Text(EnvironmentSelectorViewConstants.Strings.screenHeader)
+                    }
+                    .listStyle(.insetGrouped)
+                }
+                .navigationTitle(EnvironmentSelectorViewConstants.Strings.screenTitle)
+                .navigationBarTitleDisplayMode(.inline)
+                .accessibilityIdentifier(EnvironmentSelectorViewConstants.AccessibilityIdentifiers.view.rawValue)
+            } else {
+                NavigationManager.navigateTo(screenIdentifier: initialViewIdentifier)
+            }
         }
     }
     

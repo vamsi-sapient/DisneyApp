@@ -11,4 +11,5 @@ import SwiftUI
 
 protocol CharacterListViewModelProtocol: BaseViewModel {
     func getCharactersList()
+    func selectCharacter(_ item: CharacterUIData)
 }

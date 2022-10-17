@@ -10,9 +10,10 @@ import Core
 
 class CharacterListViewState: BaseStateObject {
     @Published var characters = [CharacterUIData]()
+    @Published var selectedItemURL = ""
 }
 
-struct CharacterUIData: Codable {
+struct CharacterUIData {
     let id: Int
     let name: String
     let imageUrl: String?

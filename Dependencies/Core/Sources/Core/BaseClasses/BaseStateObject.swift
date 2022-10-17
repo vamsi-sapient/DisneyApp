@@ -8,7 +8,7 @@
 import Foundation
 
 open class BaseStateObject: ObservableObject {
-    @Published var showProgress = false
+    @Published public var showProgress = false
     
     public init() {
         

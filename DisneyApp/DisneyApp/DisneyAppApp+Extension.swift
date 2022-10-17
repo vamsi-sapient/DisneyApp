@@ -13,7 +13,7 @@ import AppInitializer
 import DisneyUIKit
 
 extension DisneyAppApp {
-    public func registerDependencies(themeManager: ThemeManagerProtocol,
+    func registerDependencies(themeManager: ThemeManagerProtocol,
                                      dataManager: DataManagerProtocol) {
         registerAppInitializerModule()
         registerDisneyCharactersModule(themeManager: themeManager, dataManager: dataManager)

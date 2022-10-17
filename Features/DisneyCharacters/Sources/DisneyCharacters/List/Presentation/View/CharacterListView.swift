@@ -7,6 +7,7 @@
 
 import SwiftUI
 import DisneyUIKit
+import Core
 
 struct CharacterListView: View {
     
@@ -27,14 +28,24 @@ struct CharacterListView: View {
     }
     
     public var body: some View {
-        List {
-            ForEach(state.characters, id: \.id) { item in
-                CharacterListRow(item: item, themeManager: themeManager)
+        if state.showProgress {
+            ActivityIndicatorView(themeManager: themeManager)
+        } else if state.selectedItemURL.isEmpty {
+            List {
+                ForEach(state.characters, id: \.id) { item in
+                    CharacterListRow(item: item, themeManager: themeManager)
+                        .onTapGesture {
+                            viewModel?.selectCharacter(item)
+                        }
+                }
             }
+            .navigationTitle(CharacterListViewConstants.Strings.screenTitle)
+            .navigationBarTitleDisplayMode(.inline)
+            .accessibilityIdentifier(CharacterListViewConstants.AccessibilityIdentifiers.view.rawValue)
+        } else {
+            NavigationManager.navigateTo(screenIdentifier: CharacterListViewConstants.detailScreenIdentifier,
+                                         params: CharacterDetailNavigationParams(url: state.selectedItemURL))
         }
-        .navigationTitle(CharacterListViewConstants.Strings.screenTitle)
-        .navigationBarTitleDisplayMode(.inline)
-        .accessibilityIdentifier(CharacterListViewConstants.AccessibilityIdentifiers.view.rawValue)
     }
 }
 

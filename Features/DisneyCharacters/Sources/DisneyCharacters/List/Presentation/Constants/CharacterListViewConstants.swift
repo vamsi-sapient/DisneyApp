@@ -7,6 +7,7 @@
 
 import Foundation
 import Core
+import SharedDependencies
 
 struct CharacterListViewConstants {
     enum AccessibilityIdentifiers: String {
@@ -26,4 +27,5 @@ struct CharacterListViewConstants {
     }
     
     static let defaultImage = "person"
+    static let detailScreenIdentifier = "\(ModuleNames.disneyCharacters.rawValue)_\(DisneyCharactersScreenConstants.detail.rawValue)"
 }

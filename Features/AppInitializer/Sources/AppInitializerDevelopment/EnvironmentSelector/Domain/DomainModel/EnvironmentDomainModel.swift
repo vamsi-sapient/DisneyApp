@@ -14,7 +14,7 @@ public struct EnvironmentDomainModel: BaseDomainModel {
 
 public struct EnvironmentDomainData: Codable {
     let name: String
-    let unauthURL: String?
+    let unauthURL: String
     let authURL: String
     let crmURL: String?
 }
