@@ -8,5 +8,5 @@
 import Foundation
 import Core
 
-class WelcomeContainerViewState: BaseStateObject {
+final class WelcomeContainerViewState: BaseStateObject {
 }

@@ -9,5 +9,6 @@ import Foundation
 import Core
 
 public protocol LocalDataReaderClientProtocol {
-    func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T>
+    init(crashlytics: CrashlyticsProtocol)
+    func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> T?
 }

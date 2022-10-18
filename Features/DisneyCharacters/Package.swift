@@ -19,7 +19,7 @@ let package = Package(
         .package(path: "../../Dependencies/Core"),
         .package(path: "../../Dependencies/NetworkManager"),
         .package(path: "../../Dependencies/DisneyUIKit"),
-        .package(path: "../../Dependencies/SharedDependencies")
+        .package(path: "../../Dependencies/SharedDependencies"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

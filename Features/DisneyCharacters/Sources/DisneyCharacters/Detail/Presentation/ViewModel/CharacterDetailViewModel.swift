@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-class CharacterDetailViewModel: BaseViewModel, CharacterDetailViewModelProtocol {
+final class CharacterDetailViewModel: BaseViewModel, CharacterDetailViewModelProtocol {
     private let state: CharacterDetailViewState
     private let usecase: CharacterDetailUsecaseProtocol
     
@@ -38,10 +38,6 @@ class CharacterDetailViewModel: BaseViewModel, CharacterDetailViewModelProtocol 
     
     private func updateUI(_ item: CharacterDetailDomainModel) -> [CharacterDetailUIData] {
         var rows = [CharacterDetailUIData]()
-        
-//        if let imageURL = item.imageUrl {
-//            rows.append(CharacterDetailUIData(value: imageURL, type: .IMAGE))
-//        }
         
         if let values = item.films, values.isEmpty == false {
             rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.films, value: nil, values: values))

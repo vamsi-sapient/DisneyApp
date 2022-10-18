@@ -10,8 +10,9 @@ import Core
 import SwiftUI
 import PromiseKit
 import NetworkManager
+import AppInitializer
 
-public class EnvironmentSelectorRepository: EnvironmentSelectorRepositoryProtocol {
+public final class EnvironmentSelectorRepository: EnvironmentSelectorRepositoryProtocol {
     private let dataManager: EnvironmentSelectorDataManagerProtocol
     private let mapper: DTOToDomainModelMapper
     

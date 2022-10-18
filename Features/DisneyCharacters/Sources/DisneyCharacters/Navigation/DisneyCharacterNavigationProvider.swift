@@ -10,7 +10,7 @@ import Core
 import SharedDependencies
 import DisneyUIKit
 
-public class DisneyCharacterNavigationProvider: NavigationProviderProtocol {
+public struct DisneyCharacterNavigationProvider: NavigationProviderProtocol {
     
     fileprivate let themeManager: ThemeManagerProtocol
     fileprivate let dependencyProvider: ModuleDependencyProviderProtocol

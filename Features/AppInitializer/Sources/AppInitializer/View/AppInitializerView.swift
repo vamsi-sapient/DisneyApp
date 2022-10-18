@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 import DisneyUIKit
 
-public struct AppInitializerView: View {
+public struct AppInitializerView: View, BaseView {
     
     private let themeManager: ThemeManagerProtocol
     private let initialView: AnyView
@@ -24,23 +24,9 @@ public struct AppInitializerView: View {
         return NavigationView {
             initialView
         }
+        .accentColor(.black)
         .onAppear {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            appearance.backgroundColor = themeManager.uiColorFor(viewType: ViewType.navigationBar.rawValue,
-                                                                      viewSubType: nil)
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: themeManager.uiColorFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil),
-                                              NSAttributedString.Key.font: themeManager.uiFontFor(viewType: ViewType.navigationBarTitle.rawValue, viewSubType: nil)
-                                             ]
-            
-            let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
-            appearance.backButtonAppearance = backButtonAppearance
-            
-            // Inline appearance (standard height appearance)
-            UINavigationBar.appearance().standardAppearance = appearance
-            // Large Title appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            
+            navigationBar(themeManager: themeManager)
         }
     }
 }

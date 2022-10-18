@@ -9,7 +9,7 @@ import Foundation
 import Core
 import PromiseKit
 
-public class NetworkManager: NetworkManagerProtocol {
+public final class NetworkManager: NetworkManagerProtocol {
     
     private let crashlytics: CrashlyticsProtocol?
     

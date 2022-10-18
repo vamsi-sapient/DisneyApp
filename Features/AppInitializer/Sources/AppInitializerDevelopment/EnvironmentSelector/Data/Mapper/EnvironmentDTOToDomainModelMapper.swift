@@ -7,6 +7,7 @@
 
 import Foundation
 import Core
+import AppInitializer
 
 public struct EnvironmentDTOToDomainModelMapper: DTOToDomainModelMapper {
 

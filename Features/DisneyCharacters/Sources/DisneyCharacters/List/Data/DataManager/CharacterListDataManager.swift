@@ -10,7 +10,7 @@ import Core
 import SwiftUI
 import NetworkManager
 
-class CharacterListDataManager: CharacterListDataManagerProtocol {
+struct CharacterListDataManager: CharacterListDataManagerProtocol {
     
     private let dataManager: DataManagerProtocol
     

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>environments</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>prod</string>
+			<key>authURL</key>
+			<string>https://api.disneyapi.dev/</string>
+			<key>unauthURL</key>
+			<string></string>
+			<key>crmURL</key>
+			<string></string>
+		</dict>
+	</array>
+</dict>
+</plist>

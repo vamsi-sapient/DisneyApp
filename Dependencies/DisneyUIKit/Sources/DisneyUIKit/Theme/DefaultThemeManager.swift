@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public class DefaultThemeManager: ThemeManagerProtocol {
+public struct DefaultThemeManager: ThemeManagerProtocol {
     
     public init() {
         

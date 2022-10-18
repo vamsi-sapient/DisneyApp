@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import Core
 
-public class RestNetworkClient: NSObject, DataProviderClientProtocol {
+public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
     
     private var environment: EnvironmentData?
     

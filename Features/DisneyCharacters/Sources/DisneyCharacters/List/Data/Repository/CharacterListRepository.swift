@@ -11,7 +11,7 @@ import SwiftUI
 import PromiseKit
 import NetworkManager
 
-class CharacterListRepository: CharacterListRepositoryProtocol {
+struct CharacterListRepository: CharacterListRepositoryProtocol {
     private let dataManager: CharacterListDataManagerProtocol
     private let mapper: DTOToDomainModelMapper
     
@@ -22,12 +22,8 @@ class CharacterListRepository: CharacterListRepositoryProtocol {
     
     func getCharactersList() -> Response<CharacterListDomainModel> {
         return Promise { seal in
-            dataManager.getCharactersList().done {[weak self] dto in
-                guard let weakself = self else {
-                    seal.reject(DisneyError(message: "Instance is destroyed"))
-                    return
-                }
-                guard let domainModel = weakself.mapper.transform(dto: dto) as? CharacterListDomainModel else {
+            dataManager.getCharactersList().done { dto in
+                guard let domainModel = self.mapper.transform(dto: dto) as? CharacterListDomainModel else {
                     seal.reject(DisneyError(message: "Not able to transfer to the domain model"))
                     return
                 }

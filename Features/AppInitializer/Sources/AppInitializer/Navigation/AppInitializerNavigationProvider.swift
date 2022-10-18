@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 import SharedDependencies
 
-public class AppInitializerNavigationProvider: NavigationProviderProtocol {
+public struct AppInitializerNavigationProvider: NavigationProviderProtocol {
     
     public init() {
         

@@ -13,6 +13,8 @@
 		42125BAC28FBE37200F25BB8 /* DisneyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BAB28FBE37200F25BB8 /* DisneyAppApp.swift */; };
 		42125BDB28FBE8FC00F25BB8 /* GlobalScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */; };
 		42125BDC28FBE8FC00F25BB8 /* GlobalScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */; };
+		422615C428FECE540045E0D1 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422615C328FECE540045E0D1 /* Environments.plist */; };
+		422615C528FECFFC0045E0D1 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429C496228F4AD65006BA23D /* Environments.plist */; };
 		424557E028F0E33F00C27B68 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 424557DF28F0E33F00C27B68 /* Core */; };
 		424557E328F0E34F00C27B68 /* SharedDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 424557E228F0E34F00C27B68 /* SharedDependencies */; };
 		424557E628F0E3D400C27B68 /* DisneyCharacters in Frameworks */ = {isa = PBXBuildFile; productRef = 424557E528F0E3D400C27B68 /* DisneyCharacters */; };
@@ -39,11 +41,9 @@
 		4252AA2D28FB538F00618978 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC7D5A28F8089D003A18C7 /* Roboto-ThinItalic.ttf */; };
 		4252AA2E28FB538F00618978 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A56C7228EF7A3A00335C14 /* Assets.xcassets */; };
 		4252AA2F28FB538F00618978 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC7D5B28F8089D003A18C7 /* Roboto-BoldItalic.ttf */; };
-		4252AA3028FB538F00618978 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429C496228F4AD65006BA23D /* Environments.plist */; };
 		4252AA3928FB53A900618978 /* AppInitializer in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA3828FB53A900618978 /* AppInitializer */; };
 		4252AA3B28FB53B600618978 /* AppInitializerDevelopment in Frameworks */ = {isa = PBXBuildFile; productRef = 4252AA3A28FB53B600618978 /* AppInitializerDevelopment */; };
 		429C495B28F0FDEF006BA23D /* DisneyUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 429C495A28F0FDEF006BA23D /* DisneyUIKit */; };
-		429C496328F4AD65006BA23D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429C496228F4AD65006BA23D /* Environments.plist */; };
 		429C496528F4E368006BA23D /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 429C496428F4E368006BA23D /* NetworkManager */; };
 		429C496828F724CD006BA23D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429C496728F724CD006BA23D /* Colors.xcassets */; };
 		42A56C7328EF7A3A00335C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A56C7228EF7A3A00335C14 /* Assets.xcassets */; };
@@ -89,6 +89,7 @@
 		42125BD728FBE48F00F25BB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42125BD828FBE49E00F25BB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42125BDA28FBE8FC00F25BB8 /* GlobalScreenConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalScreenConstants.swift; sourceTree = "<group>"; };
+		422615C328FECE540045E0D1 /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
 		424557DE28F0E30000C27B68 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../Dependencies/Core; sourceTree = "<group>"; };
 		424557E128F0E34700C27B68 /* SharedDependencies */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedDependencies; path = ../Dependencies/SharedDependencies; sourceTree = "<group>"; };
 		4252A9CD28F97E1E00618978 /* DisneyCharacters */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DisneyCharacters; path = ../Features/DisneyCharacters; sourceTree = "<group>"; };
@@ -201,9 +202,18 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		422615C228FECE540045E0D1 /* Production */ = {
+			isa = PBXGroup;
+			children = (
+				422615C328FECE540045E0D1 /* Environments.plist */,
+			);
+			path = Production;
+			sourceTree = "<group>";
+		};
 		429C496028F4AD02006BA23D /* Environment */ = {
 			isa = PBXGroup;
 			children = (
+				422615C228FECE540045E0D1 /* Production */,
 				429C496128F4AD33006BA23D /* Development */,
 			);
 			path = Environment;
@@ -476,6 +486,7 @@
 				4252AA2528FB538F00618978 /* Roboto-Black.ttf in Resources */,
 				4252AA2628FB538F00618978 /* Roboto-BlackItalic.ttf in Resources */,
 				4252AA2728FB538F00618978 /* Roboto-Regular.ttf in Resources */,
+				422615C428FECE540045E0D1 /* Environments.plist in Resources */,
 				4252AA2828FB538F00618978 /* Preview Assets.xcassets in Resources */,
 				4252AA2928FB538F00618978 /* LICENSE.txt in Resources */,
 				4252AA2A28FB538F00618978 /* Roboto-Light.ttf in Resources */,
@@ -484,7 +495,6 @@
 				4252AA2D28FB538F00618978 /* Roboto-ThinItalic.ttf in Resources */,
 				4252AA2E28FB538F00618978 /* Assets.xcassets in Resources */,
 				4252AA2F28FB538F00618978 /* Roboto-BoldItalic.ttf in Resources */,
-				4252AA3028FB538F00618978 /* Environments.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +508,7 @@
 				42DC7D6D28F8089D003A18C7 /* Roboto-Bold.ttf in Resources */,
 				42DC7D6928F8089D003A18C7 /* Roboto-LightItalic.ttf in Resources */,
 				42DC7D6F28F8089D003A18C7 /* Roboto-Black.ttf in Resources */,
+				422615C528FECFFC0045E0D1 /* Environments.plist in Resources */,
 				42DC7D6C28F8089D003A18C7 /* Roboto-BlackItalic.ttf in Resources */,
 				42DC7D6528F8089D003A18C7 /* Roboto-Regular.ttf in Resources */,
 				42A56C7628EF7A3A00335C14 /* Preview Assets.xcassets in Resources */,
@@ -508,7 +519,6 @@
 				42DC7D6728F8089D003A18C7 /* Roboto-ThinItalic.ttf in Resources */,
 				42A56C7328EF7A3A00335C14 /* Assets.xcassets in Resources */,
 				42DC7D6828F8089D003A18C7 /* Roboto-BoldItalic.ttf in Resources */,
-				429C496328F4AD65006BA23D /* Environments.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

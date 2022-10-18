@@ -9,10 +9,9 @@ import SwiftUI
 import DisneyUIKit
 import Core
 
-struct CharacterListView: View {
+struct CharacterListView: View, BaseView {
     
     @ObservedObject var state: CharacterListViewState
-    @ObservedObject var result = CharacterListResult()
     
     private let viewModel: CharacterListViewModelProtocol?
     private let themeManager: ThemeManagerProtocol;
@@ -30,22 +29,26 @@ struct CharacterListView: View {
     public var body: some View {
         if state.showProgress {
             ActivityIndicatorView(themeManager: themeManager)
-        } else if state.selectedItemURL.isEmpty {
+        } else {
             List {
                 ForEach(state.characters, id: \.id) { item in
-                    CharacterListRow(item: item, themeManager: themeManager)
-                        .onTapGesture {
-                            viewModel?.selectCharacter(item)
-                        }
+                    NavigationLink(destination: nextScreen(item.url)) {
+                        CharacterListRow(item: item, themeManager: themeManager)
+                    }
                 }
             }
             .navigationTitle(CharacterListViewConstants.Strings.screenTitle)
             .navigationBarTitleDisplayMode(.inline)
             .accessibilityIdentifier(CharacterListViewConstants.AccessibilityIdentifiers.view.rawValue)
-        } else {
-            NavigationManager.navigateTo(screenIdentifier: CharacterListViewConstants.detailScreenIdentifier,
-                                         params: CharacterDetailNavigationParams(url: state.selectedItemURL))
+            .onAppear {
+                navigationBar(themeManager: themeManager)
+            }
         }
+    }
+    
+    private func nextScreen(_ url: String) -> AnyView {
+        return NavigationManager.navigateTo(screenIdentifier: CharacterListViewConstants.detailScreenIdentifier,
+                                            params: CharacterDetailNavigationParams(url: url))
     }
 }
 

@@ -9,6 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 import NetworkManager
+import AppInitializer
 
 public protocol EnvironmentSelectorDataManagerProtocol {
     func getEnvironmentsList() -> Response<EnvironmentDTOModel>

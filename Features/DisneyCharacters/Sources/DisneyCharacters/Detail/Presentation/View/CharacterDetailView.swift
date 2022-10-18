@@ -8,7 +8,7 @@
 import SwiftUI
 import DisneyUIKit
 
-struct CharacterDetailView: View {
+struct CharacterDetailView: View, BaseView {
     
     @ObservedObject var state: CharacterDetailViewState
     

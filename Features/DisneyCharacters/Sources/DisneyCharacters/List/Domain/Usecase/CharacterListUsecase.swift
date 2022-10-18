@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-class CharacterListUsecase: CharacterListUsecaseProtocol {
+struct CharacterListUsecase: CharacterListUsecaseProtocol {
     private let repository: CharacterListRepositoryProtocol
     
     init(repository: CharacterListRepositoryProtocol) {

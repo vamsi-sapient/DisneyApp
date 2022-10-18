@@ -24,7 +24,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DisneyUIKit",
-            dependencies: ["Core", .product(name: "NukeUI", package: "Nuke"),],
+            dependencies: ["Core", .product(name: "NukeUI", package: "Nuke")],
             resources: [.process("Resources")]
         ),
         .testTarget(

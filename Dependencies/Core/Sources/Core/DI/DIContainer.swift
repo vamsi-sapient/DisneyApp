@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class DIContainer {
+public final class DIContainer {
     private static let shared = DIContainer()
     private var crashlytics: CrashlyticsProtocol?
     private var dependencyProviders = [String: ModuleDependencyProviderProtocol]()

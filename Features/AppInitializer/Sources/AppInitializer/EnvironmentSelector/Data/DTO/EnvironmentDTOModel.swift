@@ -9,13 +9,13 @@ import Foundation
 import Core
 
 public struct EnvironmentDTOModel: BaseDTO {
-    let environments: [EnvironmentDTOData]
+    public let environments: [EnvironmentDTOData]
 }
 
 public struct EnvironmentDTOData: Codable {
-    let name: String
-    let unauthURL: String
-    let authURL: String
-    let crmURL: String?
-    let authTokenHeader: String?
+    public let name: String
+    public let unauthURL: String
+    public let authURL: String
+    public let crmURL: String?
+    public let authTokenHeader: String?
 }

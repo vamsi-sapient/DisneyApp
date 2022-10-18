@@ -7,11 +7,13 @@ public struct AppInitializer {
 
     private let dataManager: DataManagerProtocol
     private let themeManager: ThemeManagerProtocol
+    private let plistReader: LocalDataReaderClientProtocol
+    private let crashlytics: CrashlyticsProtocol
 
     public init(environmentData: EnvironmentData? = nil) {
 
         let authTokenManager = AuthManager()
-        let crashlytics = DefaultCrashlytics()
+        crashlytics = DefaultCrashlytics()
         let restClient = RestNetworkClient(crashlytics: crashlytics, authTokenManager: authTokenManager)
         let networkManager = NetworkManager(crashlytics: crashlytics,
                                             restClient: restClient,
@@ -23,10 +25,11 @@ public struct AppInitializer {
         }
 
         self.themeManager = ThemeManager()
+        self.plistReader = PListReader(crashlytics: crashlytics)
         dataManager = DataManager(crashlytics: crashlytics,
                                   authTokenManager: authTokenManager,
                                   networkManager: networkManager,
-                                  plistReader: PListReader()
+                                  plistReader: plistReader
                                   )
         NavigationManager.initializeNavigationManager(crashlytics: crashlytics)
     }
@@ -37,5 +40,13 @@ public struct AppInitializer {
 
     public func readThemeManager() -> ThemeManagerProtocol {
         return themeManager
+    }
+    
+    public func readPListReader() -> LocalDataReaderClientProtocol {
+        return plistReader
+    }
+    
+    public func readCrashlytics() -> CrashlyticsProtocol {
+        return crashlytics
     }
 }

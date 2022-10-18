@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-public class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorViewModelProtocol {
+public final class EnvironmentSelectorViewModel: BaseViewModel, EnvironmentSelectorViewModelProtocol {
     private var state: EnvironmentSelectorViewState
     private let usecase: EnvironmentSelectorUsecaseProtocol
     private var environments: EnvironmentDomainModel?

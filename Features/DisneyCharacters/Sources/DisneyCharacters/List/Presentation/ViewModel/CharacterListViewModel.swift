@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
+final class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
     private let state: CharacterListViewState
     private let usecase: CharacterListUsecaseProtocol
     
@@ -40,12 +40,5 @@ class CharacterListViewModel: BaseViewModel, CharacterListViewModelProtocol {
         }.catch { error in
             
         }
-    }
-    
-    func selectCharacter(_ item: CharacterUIData) {
-        guard let url = item.url else {
-            return
-        }
-        state.selectedItemURL = url
     }
 }

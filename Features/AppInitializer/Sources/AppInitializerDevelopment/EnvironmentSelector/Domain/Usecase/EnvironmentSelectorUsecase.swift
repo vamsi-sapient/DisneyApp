@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-public class EnvironmentSelectorUsecase: EnvironmentSelectorUsecaseProtocol {
+public final class EnvironmentSelectorUsecase: EnvironmentSelectorUsecaseProtocol {
     private let repository: EnvironmentSelectorRepositoryProtocol
     
     public init(repository: EnvironmentSelectorRepositoryProtocol) {

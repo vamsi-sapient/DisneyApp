@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-class WelcomeContainerViewModel: BaseViewModel {
+final class WelcomeContainerViewModel: BaseViewModel {
     private let state: WelcomeContainerViewState
     private let result: WelcomeContainerViewResult
     

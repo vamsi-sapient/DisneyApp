@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-public class EnvironmentSelectorViewState: BaseStateObject {
+public final class EnvironmentSelectorViewState: BaseStateObject {
     @Published var environmentTitles: [EnvironmentUIModel]
     @Published var selectedTitle = ""
     

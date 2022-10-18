@@ -17,7 +17,7 @@ struct CharacterDetailDTOToDomainModelMapper: DTOToDomainModelMapper {
     func transform(dto: BaseDTO) -> BaseDomainModel {
         guard let element = dto as? CharacterDetailDTOModel else {
             return CharacterDetailDomainModel(id: 0, name: "",
-                                              imageUrl: nil, url: nil,
+                                              imageUrl: nil, url: "",
                                               films: nil, shortFilms: nil,
                                               tvShows: nil, videoGames: nil,
                                               parkAttractions: nil,

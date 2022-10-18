@@ -10,7 +10,7 @@ import Core
 import SharedDependencies
 import AppInitializer
 
-class GlobalNavigationProvider: NavigationProviderProtocol {
+struct GlobalNavigationProvider: NavigationProviderProtocol {
     
     func screen(for screenIdentifier: String, params: NavigationParams?) -> AnyView? {
         let screenName = GlobalScreenConstants(rawValue: screenIdentifier)

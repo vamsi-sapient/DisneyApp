@@ -8,6 +8,6 @@
 import Foundation
 import Core
 
-public class WelcomeContainerViewResult: BaseStateObject {
+public final class WelcomeContainerViewResult: BaseStateObject {
     @Published public var isTimerExpired = false
 }

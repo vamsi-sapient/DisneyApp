@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 
-class CharacterDetailUsecase: CharacterDetailUsecaseProtocol {
+struct CharacterDetailUsecase: CharacterDetailUsecaseProtocol {
     private let repository: CharacterDetailRepositoryProtocol
     
     init(repository: CharacterDetailRepositoryProtocol) {

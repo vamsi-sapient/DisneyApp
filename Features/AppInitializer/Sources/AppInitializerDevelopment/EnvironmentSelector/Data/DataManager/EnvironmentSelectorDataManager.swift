@@ -9,8 +9,10 @@ import Foundation
 import Core
 import SwiftUI
 import NetworkManager
+import PromiseKit
+import AppInitializer
 
-public class EnvironmentSelectorDataManager: EnvironmentSelectorDataManagerProtocol {
+public final class EnvironmentSelectorDataManager: EnvironmentSelectorDataManagerProtocol {
     
     private let dataManager: DataManagerProtocol
     

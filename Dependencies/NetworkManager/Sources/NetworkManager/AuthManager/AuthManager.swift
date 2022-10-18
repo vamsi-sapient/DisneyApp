@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class AuthManager: AuthManagerProtocol {
+public final class AuthManager: AuthManagerProtocol {
     
     private var authToken: String?
     private var refreshToken: String?

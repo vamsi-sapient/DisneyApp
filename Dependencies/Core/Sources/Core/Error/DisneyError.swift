@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class DisneyError: Error {
+public struct DisneyError: Error {
     
     public let message: String
     

@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SharedDependencies
 
-public class DisneyCharactersModuleDependencyProvider: ModuleDependencyProviderProtocol {
+public final class DisneyCharactersModuleDependencyProvider: ModuleDependencyProviderProtocol {
     
     fileprivate let dataManager: DataManagerProtocol
     
