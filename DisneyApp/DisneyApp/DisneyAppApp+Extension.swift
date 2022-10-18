@@ -14,7 +14,7 @@ import DisneyUIKit
 
 extension DisneyAppApp {
     func registerDependencies(themeManager: ThemeManagerProtocol,
-                                     dataManager: DataManagerProtocol) {
+                              dataManager: DataManagerProtocol) {
         registerAppInitializerModule()
         registerDisneyCharactersModule(themeManager: themeManager, dataManager: dataManager)
         NavigationManager.registerNavigationLinkProvider(featureName: ModuleNames.global.rawValue,

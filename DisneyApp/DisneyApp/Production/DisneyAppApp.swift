@@ -15,9 +15,8 @@ import DisneyUIKit
 
 @main
 struct DisneyAppApp: App {
-    
-    fileprivate let appInitializer: AppInitializer
-    fileprivate let themeManager: ThemeManagerProtocol
+    private let appInitializer: AppInitializer
+    private let themeManager: ThemeManagerProtocol
     
     init() {
         appInitializer = AppInitializer()
