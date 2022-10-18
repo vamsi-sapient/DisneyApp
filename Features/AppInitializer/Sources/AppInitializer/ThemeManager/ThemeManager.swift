@@ -20,7 +20,7 @@ public struct ThemeManager: ThemeManagerProtocol {
         var color: UIColor?
         switch type {
         case .navigationBar:
-            color = UIColor(named: DisneyColors.blue)?.withAlphaComponent(0.2)
+            color = UIColor(named: DisneyColors.blue)?.withAlphaComponent(0.7)
             
         case .navigationBarTitle:
             color = UIColor(named: DisneyColors.grey)
@@ -35,6 +35,9 @@ public struct ThemeManager: ThemeManagerProtocol {
             
         case .activityIndicator:
             color = UIColor(named: DisneyColors.green)
+            
+        case .background:
+            color = UIColor(named: DisneyColors.grey)?.withAlphaComponent(0.2)
             
         default:
             return UIColor.clear

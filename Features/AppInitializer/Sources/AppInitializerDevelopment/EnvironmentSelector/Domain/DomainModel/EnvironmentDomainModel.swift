@@ -17,5 +17,6 @@ public struct EnvironmentDomainData: Codable {
     let unauthURL: String
     let authURL: String
     let crmURL: String?
+    let authTokenHeader: String?
 }
 

@@ -9,6 +9,10 @@ import Foundation
 import Core
 
 public protocol NetworkManagerProtocol {
+    init(crashlytics: CrashlyticsProtocol,
+                restClient: DataProviderClientProtocol?,
+                graphqlClient: DataProviderClientProtocol?,
+                mockNetworkClient: DataProviderClientProtocol?)
     func setEnvironmentData(_ data: EnvironmentData)
     func executeAPIRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T>
 }

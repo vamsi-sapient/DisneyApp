@@ -21,21 +21,70 @@ class CharacterDetailViewModel: BaseViewModel, CharacterDetailViewModelProtocol 
     func getCharacterDetails(_ params: CharacterDetailNavigationParams) {
         state.showProgress = true
         usecase.getCharacterDetails(params.url).done { [weak self] item in
-            self?.state.showProgress = false
-            self?.state.screenTitle = item.name
-            self?.state.characterDetails = CharacterDetailUIData(id: item.id,
-                                                                 name: item.name,
-                                                                 imageUrl: item.imageUrl,
-                                                                 url: item.url,
-                                                                 films: item.films,
-                                                                 shortFilms: item.shortFilms,
-                                                                 tvShows: item.tvShows,
-                                                                 videoGames: item.videoGames,
-                                                                 parkAttractions: item.parkAttractions,
-                                                                 allies: item.allies,
-                                                                 enemies: item.enemies)
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.state.showProgress = false
+            if let imageURL = item.imageUrl {
+                weakSelf.state.characterImageURL = imageURL
+            }
+            weakSelf.state.screenTitle = item.name
+            
+            weakSelf.state.characterDetails = weakSelf.updateUI(item)
         }.catch { error in
             
         }
+    }
+    
+    private func updateUI(_ item: CharacterDetailDomainModel) -> [CharacterDetailUIData] {
+        var rows = [CharacterDetailUIData]()
+        
+//        if let imageURL = item.imageUrl {
+//            rows.append(CharacterDetailUIData(value: imageURL, type: .IMAGE))
+//        }
+        
+        if let values = item.films, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.films, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.films, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        if let values = item.shortFilms, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.shortFilms, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.shortFilms, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        if let values = item.tvShows, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.tvShows, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.tvShows, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        if let values = item.videoGames, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.videoGames, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.videoGames, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        if let values = item.parkAttractions, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.parkAttractions, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.parkAttractions, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        if let values = item.allies, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.allies, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.allies, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        if let values = item.enemies, values.isEmpty == false {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.enemies, value: nil, values: values))
+        } else {
+            rows.append(CharacterDetailUIData(title: CharacterDetailViewConstants.Titles.enemies, value: CharacterDetailViewConstants.Titles.noData))
+        }
+        
+        return rows
     }
 }

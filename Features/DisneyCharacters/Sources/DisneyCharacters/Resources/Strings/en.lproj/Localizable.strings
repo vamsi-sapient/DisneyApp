@@ -6,3 +6,11 @@
   
 */
 "character_list_screen_title" = "Characters";
+"character_detail_title_films" = "FILMS : ";
+"character_detail_title_short_films" = "SHORT FILMS : ";
+"character_detail_title_tv_shows_films" = "TV SHOWS : ";
+"character_detail_title_video_games_films" = "VIDEO GAMES : ";
+"character_detail_title_park_attractions" = "PARK ATTRACTIONS : ";
+"character_detail_title_allies" = "ALLIES : ";
+"character_detail_title_enemies" = "ENEMIES : ";
+"character_detail_no_data" = "None";

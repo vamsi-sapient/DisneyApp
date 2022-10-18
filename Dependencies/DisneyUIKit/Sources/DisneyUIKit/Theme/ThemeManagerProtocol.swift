@@ -14,6 +14,7 @@ public enum ViewType: String {
     case button
     case imagePlaceHolder
     case activityIndicator
+    case background
 }
 
 public enum ButtonType: String {

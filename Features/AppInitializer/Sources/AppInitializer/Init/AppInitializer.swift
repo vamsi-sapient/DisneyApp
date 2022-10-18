@@ -10,8 +10,9 @@ public struct AppInitializer {
 
     public init(environmentData: EnvironmentData? = nil) {
 
+        let authTokenManager = AuthManager()
         let crashlytics = DefaultCrashlytics()
-        let restClient = RestNetworkClient(crashlytics: crashlytics)
+        let restClient = RestNetworkClient(crashlytics: crashlytics, authTokenManager: authTokenManager)
         let networkManager = NetworkManager(crashlytics: crashlytics,
                                             restClient: restClient,
                                             graphqlClient: nil,
@@ -23,6 +24,7 @@ public struct AppInitializer {
 
         self.themeManager = ThemeManager()
         dataManager = DataManager(crashlytics: crashlytics,
+                                  authTokenManager: authTokenManager,
                                   networkManager: networkManager,
                                   plistReader: PListReader()
                                   )

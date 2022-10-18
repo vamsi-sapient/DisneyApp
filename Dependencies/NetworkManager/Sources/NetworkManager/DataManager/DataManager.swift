@@ -5,18 +5,25 @@ public class DataManager: DataManagerProtocol {
     private let networkManager: NetworkManagerProtocol
     private var crashlytics: CrashlyticsProtocol?
     private var plistReader: LocalDataReaderClientProtocol?
+    private let authTokenManager: AuthManagerProtocol
     
     public init(crashlytics: CrashlyticsProtocol,
+                authTokenManager: AuthManagerProtocol,
                 networkManager: NetworkManagerProtocol,
                 plistReader: LocalDataReaderClientProtocol?
                 ) {
         self.plistReader = plistReader
         self.crashlytics = crashlytics
         self.networkManager = networkManager
+        self.authTokenManager = authTokenManager
     }
     
     public func setEnvironmentData(_ data: EnvironmentData) {
         networkManager.setEnvironmentData(data)
+    }
+    
+    public func storeTokens(authToken: String, refreshToken: String?) {
+        authTokenManager.storeTokens(authToken: authToken, refreshToken: refreshToken)
     }
     
     public func request<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {

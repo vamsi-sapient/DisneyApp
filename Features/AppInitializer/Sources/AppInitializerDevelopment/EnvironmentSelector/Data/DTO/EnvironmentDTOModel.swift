@@ -17,4 +17,5 @@ public struct EnvironmentDTOData: Codable {
     let unauthURL: String
     let authURL: String
     let crmURL: String?
+    let authTokenHeader: String?
 }

@@ -14,10 +14,12 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
     private var environment: EnvironmentData?
     
     private lazy var session = URLSession.shared
-    private var crashlytics: CrashlyticsProtocol
+    private let crashlytics: CrashlyticsProtocol
+    private let authTokenManager: AuthManagerProtocol
     
-    public init(crashlytics: CrashlyticsProtocol) {
+    required public init(crashlytics: CrashlyticsProtocol, authTokenManager: AuthManagerProtocol) {
         self.crashlytics = crashlytics
+        self.authTokenManager = authTokenManager
         super.init()
         self.session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
     }
@@ -55,6 +57,11 @@ public class RestNetworkClient: NSObject, DataProviderClientProtocol {
             request.headers?.forEach({ key, value in
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             })
+            
+            if request.apiType == .AUTH, let authToken = authTokenManager.getAuthToken(),
+               let authTokenHeader = environment.authTokenHeader {
+                urlRequest.setValue(authToken, forHTTPHeaderField: authTokenHeader)
+            }
             
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 guard error == nil else {

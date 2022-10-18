@@ -23,7 +23,8 @@ public struct EnvironmentDTOToDomainModelMapper: DTOToDomainModelMapper {
             environments.append(EnvironmentDomainData(name: element.name,
                                                       unauthURL: element.unauthURL,
                                                       authURL: element.authURL,
-                                                      crmURL: element.crmURL))
+                                                      crmURL: element.crmURL,
+                                                      authTokenHeader: element.authTokenHeader))
         }
         
         return EnvironmentDomainModel(environments: environments)

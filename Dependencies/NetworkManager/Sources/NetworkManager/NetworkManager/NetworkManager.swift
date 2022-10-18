@@ -11,16 +11,16 @@ import PromiseKit
 
 public class NetworkManager: NetworkManagerProtocol {
     
-    private var crashlytics: CrashlyticsProtocol?
+    private let crashlytics: CrashlyticsProtocol?
     
-    private var restClient: DataProviderClientProtocol?
-    private var graphqlClient: DataProviderClientProtocol?
-    private var mockNetworkClient: DataProviderClientProtocol?
+    private let restClient: DataProviderClientProtocol?
+    private let graphqlClient: DataProviderClientProtocol?
+    private let mockNetworkClient: DataProviderClientProtocol?
     
-    public init(crashlytics: CrashlyticsProtocol,
-                restClient: DataProviderClientProtocol?,
-                graphqlClient: DataProviderClientProtocol?,
-                mockNetworkClient: DataProviderClientProtocol?) {
+    required public init(crashlytics: CrashlyticsProtocol,
+                         restClient: DataProviderClientProtocol?,
+                         graphqlClient: DataProviderClientProtocol?,
+                         mockNetworkClient: DataProviderClientProtocol?) {
         self.crashlytics = crashlytics
         self.restClient = restClient
         self.graphqlClient = graphqlClient

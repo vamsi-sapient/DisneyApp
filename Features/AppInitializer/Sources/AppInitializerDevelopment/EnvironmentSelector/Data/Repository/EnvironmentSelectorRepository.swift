@@ -43,6 +43,7 @@ public class EnvironmentSelectorRepository: EnvironmentSelectorRepositoryProtoco
         dataManager.selectTheEnvironment(EnvironmentData(name: data.name,
                                                          unauthURL: data.unauthURL,
                                                          authURL: data.authURL,
-                                                         crmURL: data.crmURL))
+                                                         crmURL: data.crmURL,
+                                                         authTokenHeader: data.authTokenHeader))
     }
 }
