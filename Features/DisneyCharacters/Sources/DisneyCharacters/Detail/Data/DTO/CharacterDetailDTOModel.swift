@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-struct CharacterDetailDTOModel: BaseDTO {
+public struct CharacterDetailDTOModel: BaseDTO {
     let _id: Int
     let name: String
     let imageUrl: String?

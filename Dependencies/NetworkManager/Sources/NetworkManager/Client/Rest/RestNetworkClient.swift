@@ -14,10 +14,10 @@ public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
     private var environment: EnvironmentData?
     
     private lazy var session = URLSession.shared
-    private let crashlytics: CrashlyticsProtocol
-    private let authTokenManager: AuthManagerProtocol
+    private let crashlytics: CrashlyticsProtocol?
+    private let authTokenManager: AuthManagerProtocol?
     
-    required public init(crashlytics: CrashlyticsProtocol, authTokenManager: AuthManagerProtocol) {
+    required public init(crashlytics: CrashlyticsProtocol?, authTokenManager: AuthManagerProtocol?) {
         self.crashlytics = crashlytics
         self.authTokenManager = authTokenManager
         super.init()
@@ -37,7 +37,7 @@ public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
             
             
             guard let url = URL(string: servicePath(environment, request: request)) else {
-                weakself.crashlytics.recordError("Could not convert the string to URL")
+                weakself.crashlytics?.recordError("Could not convert the string to URL")
                 seal.reject(DisneyError(message: "Could not convert the string to URL"))
                 return
             }
@@ -49,7 +49,7 @@ public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
                     let bodyData = try JSONSerialization.data(withJSONObject: body, options: [.prettyPrinted])
                     urlRequest.httpBody = bodyData
                 } catch {
-                    weakself.crashlytics.recordError("Could not convert the body parameters")
+                    weakself.crashlytics?.recordError("Could not convert the body parameters")
                     seal.reject(DisneyError(message: "Could not convert the body parameters"))
                 }
             }
@@ -58,21 +58,21 @@ public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             })
             
-            if request.apiType == .AUTH, let authToken = authTokenManager.getAuthToken(),
+            if request.apiType == .AUTH, let authToken = authTokenManager?.getAuthToken(),
                let authTokenHeader = environment.authTokenHeader {
                 urlRequest.setValue(authToken, forHTTPHeaderField: authTokenHeader)
             }
             
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 guard error == nil else {
-                    weakself.crashlytics.recordError(error!.localizedDescription)
+                    weakself.crashlytics?.recordError(error!.localizedDescription)
                     seal.reject(error!)
                     return
                 }
                 
                 if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                     if statusCode >= 400 {
-                        weakself.crashlytics.recordError("Network Request Failed with \(statusCode)")
+                        weakself.crashlytics?.recordError("Network Request Failed with \(statusCode)")
                         seal.reject(DisneyError(message: "Network Request Failed with \(statusCode)"))
                         return
                     }
@@ -80,7 +80,7 @@ public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
                 
                 // Conversion
                 guard let data = data else {
-                    weakself.crashlytics.recordError("Empty Data")
+                    weakself.crashlytics?.recordError("Empty Data")
                     seal.reject(DisneyError(message: "Empty Data"))
                     return
                 }
@@ -92,7 +92,7 @@ public final class RestNetworkClient: NSObject, DataProviderClientProtocol {
                     seal.fulfill(decodedObject)
                     
                 } catch {
-                    weakself.crashlytics.recordError("Could not deserialize the data")
+                    weakself.crashlytics?.recordError("Could not deserialize the data")
                     seal.reject(error)
                 }
             }

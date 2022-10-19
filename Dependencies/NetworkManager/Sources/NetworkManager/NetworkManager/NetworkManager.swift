@@ -17,7 +17,7 @@ public final class NetworkManager: NetworkManagerProtocol {
     private let graphqlClient: DataProviderClientProtocol?
     private let mockNetworkClient: DataProviderClientProtocol?
     
-    required public init(crashlytics: CrashlyticsProtocol,
+    required public init(crashlytics: CrashlyticsProtocol?,
                          restClient: DataProviderClientProtocol?,
                          graphqlClient: DataProviderClientProtocol?,
                          mockNetworkClient: DataProviderClientProtocol?) {
@@ -39,6 +39,14 @@ public final class NetworkManager: NetworkManagerProtocol {
             guard let client = restClient else {
                 return Promise { seal in
                     seal.reject(DisneyError(message: "APIHandler instance is not created"))
+                }
+            }
+            return client.executeRequest(type, request: request)
+            
+        case .MOCK:
+            guard let client = mockNetworkClient else {
+                return Promise { seal in
+                    seal.reject(DisneyError(message: "Mock Network Handler instance is not created"))
                 }
             }
             return client.executeRequest(type, request: request)

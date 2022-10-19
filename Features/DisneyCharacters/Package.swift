@@ -27,10 +27,13 @@ let package = Package(
         .target(
             name: "DisneyCharacters",
             dependencies: ["Core", "SharedDependencies", "DisneyUIKit", "NetworkManager"],
-            resources: [.process("Resources")]
+            resources: [.process("Resources")],
+            swiftSettings: [.unsafeFlags(["-enable-testing"])]
         ),
         .testTarget(
             name: "DisneyCharactersTests",
-            dependencies: ["DisneyCharacters"]),
+            dependencies: ["DisneyCharacters"],
+            resources: [.process("MockJSON")]
+        ),
     ]
 )

@@ -5,10 +5,10 @@ public struct DataManager: DataManagerProtocol {
     private let networkManager: NetworkManagerProtocol
     private var crashlytics: CrashlyticsProtocol?
     private var plistReader: LocalDataReaderClientProtocol?
-    private let authTokenManager: AuthManagerProtocol
+    private let authTokenManager: AuthManagerProtocol?
     
-    public init(crashlytics: CrashlyticsProtocol,
-                authTokenManager: AuthManagerProtocol,
+    public init(crashlytics: CrashlyticsProtocol?,
+                authTokenManager: AuthManagerProtocol?,
                 networkManager: NetworkManagerProtocol,
                 plistReader: LocalDataReaderClientProtocol?
                 ) {
@@ -23,7 +23,7 @@ public struct DataManager: DataManagerProtocol {
     }
     
     public func storeTokens(authToken: String, refreshToken: String?) {
-        authTokenManager.storeTokens(authToken: authToken, refreshToken: refreshToken)
+        authTokenManager?.storeTokens(authToken: authToken, refreshToken: refreshToken)
     }
     
     public func request<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {

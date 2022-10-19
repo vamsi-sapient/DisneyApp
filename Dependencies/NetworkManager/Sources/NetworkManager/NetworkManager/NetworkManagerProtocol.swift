@@ -9,7 +9,7 @@ import Foundation
 import Core
 
 public protocol NetworkManagerProtocol {
-    init(crashlytics: CrashlyticsProtocol,
+    init(crashlytics: CrashlyticsProtocol?,
                 restClient: DataProviderClientProtocol?,
                 graphqlClient: DataProviderClientProtocol?,
                 mockNetworkClient: DataProviderClientProtocol?)
