@@ -64,6 +64,8 @@
 		42DC7D6D28F8089D003A18C7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC7D6028F8089D003A18C7 /* Roboto-Bold.ttf */; };
 		42DC7D6E28F8089D003A18C7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC7D6128F8089D003A18C7 /* Roboto-Thin.ttf */; };
 		42DC7D6F28F8089D003A18C7 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42DC7D6228F8089D003A18C7 /* Roboto-Black.ttf */; };
+		42E709E72900AD190085FC4F /* CharacterList.json in Resources */ = {isa = PBXBuildFile; fileRef = 42E709E52900AD190085FC4F /* CharacterList.json */; };
+		42E709E82900AD190085FC4F /* CharacterDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 42E709E62900AD190085FC4F /* CharacterDetail.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,8 @@
 		42DC7D6028F8089D003A18C7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		42DC7D6128F8089D003A18C7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		42DC7D6228F8089D003A18C7 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		42E709E52900AD190085FC4F /* CharacterList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharacterList.json; sourceTree = "<group>"; };
+		42E709E62900AD190085FC4F /* CharacterDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharacterDetail.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +295,7 @@
 		42A56C7E28EF7A3A00335C14 /* DisneyAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				42E709E42900AD190085FC4F /* MockJSON */,
 				42A56C7F28EF7A3A00335C14 /* DisneyAppTests.swift */,
 			);
 			path = DisneyAppTests;
@@ -338,6 +343,15 @@
 				42DC7D6228F8089D003A18C7 /* Roboto-Black.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		42E709E42900AD190085FC4F /* MockJSON */ = {
+			isa = PBXGroup;
+			children = (
+				42E709E52900AD190085FC4F /* CharacterList.json */,
+				42E709E62900AD190085FC4F /* CharacterDetail.json */,
+			);
+			path = MockJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,6 +541,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E709E82900AD190085FC4F /* CharacterDetail.json in Resources */,
+				42E709E72900AD190085FC4F /* CharacterList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,8 @@ import Foundation
 import Core
 
 public struct CharacterDetailDTOModel: BaseDTO {
-    let _id: Int
-    let name: String
+    public let _id: Int
+    public let name: String
     let imageUrl: String?
     let url: String
     let films: [String]?

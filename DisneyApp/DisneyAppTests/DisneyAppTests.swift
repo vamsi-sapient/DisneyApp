@@ -11,6 +11,30 @@ import DisneyCharacters
 
 @testable import DisneyApp
 
+protocol BaseMockRepository {
+    func readSuccessJSON(_ fileName: String)
+}
+
+extension BaseMockRepository {
+    func readSuccessJSON(_ fileName: String) {
+        let networkManager = NetworkManager(crashlytics: nil,
+                                            restClient: nil,
+                                            graphqlClient: nil,
+                                            mockNetworkClient: MockNetworkClient(crashlytics: nil, authTokenManager: nil)
+                                           )
+        let dataManager = DataManager(crashlytics: nil,
+                                      authTokenManager: nil,
+                                      networkManager: networkManager,
+                                      plistReader: nil)
+        
+        dataManager.request(, request: DataRequest()) {
+            
+        }
+        
+        MockNetworkClient.executeRequest(<#T##self: MockNetworkClient##MockNetworkClient#>)
+    }
+}
+
 final class DisneyAppTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -64,17 +88,28 @@ final class DisneyAppTests: XCTestCase {
 //        }
         
         func testCharacterDetailDataManagerSuccessForMandatoryProperties() {
+            let mockId = 7
+            let mockName = ".GIFfany"
+            var data: CharacterDetailDTOModel?
             
-//            guard let url = MockCharacterListDTOModel.characterListDTOModel.characters.first?.url else {return}
+            let expectation = XCTestExpectation()
             
-            characterDetailDataManager?.getCharacterDetails("CharacterDetail", requestType: .MOCK).done { model in
-//                XCTAssert(model._id != MockCharacterDetailDTOModel.defaultID)
-//                XCTAssert(model.name.count > 0)
-//                XCTAssert(model.name != MockCharacterDetailDTOModel.defaultName)
-            
-            }.catch { _ in
-                
+            guard let bundleIdentifier = Bundle(for: DisneyAppTests.self).bundleIdentifier else {
+                XCTFail("Cannot read bundle identifier")
+                return
             }
             
+            characterDetailDataManager?.getCharacterDetails("CharacterDetailError",
+                                                            name: bundleIdentifier,
+                                                            requestType: .MOCK).done { model in
+//                XCTAssertEqual(model._id, mockId, "The id of the record doesnt match")
+                data = model
+//                XCTAssertEqual(model.name, "Vamsi")
+                expectation.fulfill()
+            }.catch { _ in
+            }
+            
+            wait(for: [expectation], timeout: 1.0)
+            XCTAssertEqual(data?.name, mockName)
         }
 }
