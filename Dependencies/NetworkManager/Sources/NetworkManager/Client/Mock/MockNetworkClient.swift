@@ -21,7 +21,7 @@ public struct MockNetworkClient: DataProviderClientProtocol {
     
     public func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {
         return Promise { seal in
-            var bundle = Bundle(for: type as! AnyClass)
+            var bundle = Bundle.main
             
             if request.name.isEmpty == false {
                 let bundleIdentifier = String(request.name)
@@ -32,12 +32,11 @@ public struct MockNetworkClient: DataProviderClientProtocol {
                 bundle = moduleBundle
             }
             
-            guard let filePath = bundle.path(forResource: request.path, ofType: "json") else {
+            guard let url = bundle.url(forResource: request.path, withExtension: ".json") else {
                 seal.reject(DisneyError(message: "Failed to decode local json response"))
                 return
             }
             
-            let url = URL(fileURLWithPath: filePath)
             do {
                 let data = try Data(contentsOf: url)
                 let dataModel = try JSONDecoder().decode(type, from: data)

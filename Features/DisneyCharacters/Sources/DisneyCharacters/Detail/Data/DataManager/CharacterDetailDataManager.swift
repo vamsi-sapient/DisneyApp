@@ -18,9 +18,10 @@ public struct CharacterDetailDataManager: CharacterDetailDataManagerProtocol {
         self.dataManager = dataManager
     }
     
-    public func getCharacterDetails(_ url: String, requestType: DataRequestType) -> Response<CharacterDetailDTOModel> {
+    public func getCharacterDetails(_ url: String, name: String = "", requestType: DataRequestType) -> Response<CharacterDetailDTOModel> {
         return dataManager.request(CharacterDetailDTOModel.self,
-                                   request: DataRequest(type: requestType,
+                                   request: DataRequest(name: name,
+                                                        type: requestType,
                                                         apiType: .CUSTOM,
                                                         path: url))
     }
