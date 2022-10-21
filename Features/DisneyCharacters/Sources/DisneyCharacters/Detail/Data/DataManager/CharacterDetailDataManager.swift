@@ -10,19 +10,18 @@ import Core
 import SwiftUI
 import NetworkManager
 
-public struct CharacterDetailDataManager: CharacterDetailDataManagerProtocol {
+struct CharacterDetailDataManager: CharacterDetailDataManagerProtocol {
     
     private let dataManager: DataManagerProtocol
     
-    public init(dataManager: DataManagerProtocol) {
+    init(dataManager: DataManagerProtocol) {
         self.dataManager = dataManager
     }
     
-    public func getCharacterDetails(_ url: String, name: String = "", requestType: DataRequestType) -> Response<CharacterDetailDTOModel> {
+    func getCharacterDetails(_ url: String) -> Response<CharacterDetailDTOModel> {
         return dataManager.request(CharacterDetailDTOModel.self,
-                                   request: DataRequest(name: name,
-                                                        type: requestType,
-                                                        apiType: .CUSTOM,
-                                                        path: url))
+                                   request: DataRequest(apiType: .CUSTOM,
+                                                        path: url)
+                                  )
     }
 }

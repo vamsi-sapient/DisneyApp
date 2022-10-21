@@ -11,11 +11,5 @@ import SwiftUI
 import NetworkManager
 
 protocol CharacterDetailDataManagerProtocol {
-    func getCharacterDetails(_ url: String, name: String, requestType: DataRequestType) -> Response<CharacterDetailDTOModel>
-}
-
-extension CharacterDetailDataManagerProtocol {
-    func getCharacterDetails(_ url: String, name: String = "", requestType: DataRequestType = .REST) -> Response<CharacterDetailDTOModel> {
-        return getCharacterDetails(url, name: name, requestType: requestType)
-    }
+    func getCharacterDetails(_ url: String) -> Response<CharacterDetailDTOModel>
 }

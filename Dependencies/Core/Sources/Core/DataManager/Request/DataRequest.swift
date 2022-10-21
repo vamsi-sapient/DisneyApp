@@ -29,7 +29,7 @@ public struct DataRequest {
     public let body: [String: Any]?
     
     public init(name: String = "",
-                type: DataRequestType,
+                type: DataRequestType = .REST,
                 method: NetworkRequestMethod = .GET,
                 apiType: NetworkAPIType = .AUTH,
                 path: String,

@@ -36,7 +36,7 @@ final class CharacterDetailViewModel: BaseViewModel, CharacterDetailViewModelPro
         }
     }
     
-    private func updateUI(_ item: CharacterDetailDomainModel) -> [CharacterDetailUIData] {
+    func updateUI(_ item: CharacterDetailDomainModel) -> [CharacterDetailUIData] {
         var rows = [CharacterDetailUIData]()
         
         if let values = item.films, values.isEmpty == false {

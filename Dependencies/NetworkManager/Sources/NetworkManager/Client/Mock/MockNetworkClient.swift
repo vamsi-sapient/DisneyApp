@@ -9,19 +9,25 @@ import Foundation
 import Core
 import PromiseKit
 
-public struct MockNetworkClient: DataProviderClientProtocol {
+public final class MockNetworkClient: DataProviderClientProtocol {
+    private var data: EnvironmentData?
     
     public init(crashlytics: CrashlyticsProtocol?, authTokenManager: AuthManagerProtocol?) {
         
     }
     
     public func setEnvironmentData(_ data: EnvironmentData) {
-        
+        self.data = data
     }
     
     public func executeRequest<T: Codable>(_ type: T.Type, request: DataRequest) -> Response<T> {
         return Promise { seal in
             var bundle = Bundle.main
+            var path = data?.name ?? ""
+            
+            if path.isEmpty {
+                path = request.path
+            }
             
             if request.name.isEmpty == false {
                 let bundleIdentifier = String(request.name)
@@ -30,9 +36,16 @@ public struct MockNetworkClient: DataProviderClientProtocol {
                     return
                 }
                 bundle = moduleBundle
+            } else if let name = data?.authURL, name.isEmpty == false {
+                let bundleIdentifier = String(name)
+                guard let moduleBundle = Bundle(identifier: bundleIdentifier) else {
+                    seal.reject(DisneyError(message: "Cannot find the bundle"))
+                    return
+                }
+                bundle = moduleBundle
             }
             
-            guard let url = bundle.url(forResource: request.path, withExtension: ".json") else {
+            guard let url = bundle.url(forResource: path, withExtension: ".json") else {
                 seal.reject(DisneyError(message: "Failed to decode local json response"))
                 return
             }
