@@ -28,11 +28,12 @@ struct CharacterDetailDTOToDomainModelMapper: DTOToDomainModelMapper {
                                           imageUrl: element.imageUrl,
                                           url: element.url,
                                           films: element.films,
-                                          shortFilms: nil,
+                                          shortFilms: element.shortFilms,
                                           tvShows: element.tvShows,
                                           videoGames: element.videoGames,
-                                          parkAttractions: nil,
-                                          allies: nil, enemies: nil
+                                          parkAttractions: element.parkAttractions,
+                                          allies: element.allies,
+                                          enemies: element.enemies
                                          )
         
     }

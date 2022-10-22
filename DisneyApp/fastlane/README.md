@@ -31,6 +31,22 @@ Run Swift Lint
 
 Run Unit Test Cases
 
+### ios spm_unit_test_cases
+
+```sh
+[bundle exec] fastlane ios spm_unit_test_cases
+```
+
+
+
+### ios generate_unit_test_report
+
+```sh
+[bundle exec] fastlane ios generate_unit_test_report
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

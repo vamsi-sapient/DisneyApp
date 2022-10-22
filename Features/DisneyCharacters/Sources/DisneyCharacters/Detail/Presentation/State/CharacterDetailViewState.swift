@@ -9,9 +9,23 @@ import Foundation
 import Core
 
 final class CharacterDetailViewState: BaseStateObject {
-    @Published var screenTitle: String = ""
-    @Published var characterImageURL: String = ""
-    @Published var characterDetails = [CharacterDetailUIData]()
+    @Published var screenTitle: String
+    @Published var characterImageURL: String
+    @Published var characterDetails: [CharacterDetailUIData]
+    let defaultImage: String
+    
+    init(showProgress: Bool = false,
+         screenTitle: String = "",
+         characterImageURL: String = "",
+         characterDetails: [CharacterDetailUIData] = [CharacterDetailUIData](),
+         defaultImage: String = CharacterListViewConstants.defaultImage) {
+        self.screenTitle = screenTitle
+        self.characterImageURL = characterImageURL
+        self.characterDetails = characterDetails
+        self.defaultImage = defaultImage
+        
+        super.init(showProgress: showProgress)
+    }
 }
 
 struct CharacterDetailUIData {

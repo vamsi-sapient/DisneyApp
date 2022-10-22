@@ -21,9 +21,8 @@ platform :ios do
     swiftlint
   end
   
-    desc "Run Unit Test Cases"
+  desc "Run Unit Test Cases"
   lane :run_unit_test_cases do
     run_tests()
   end
-  
 end

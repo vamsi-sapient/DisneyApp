@@ -8,6 +8,7 @@
 import SwiftUI
 import DisneyUIKit
 import Core
+import AppInitializer
 
 struct CharacterListView: View, BaseView {
     
@@ -33,7 +34,9 @@ struct CharacterListView: View, BaseView {
             List {
                 ForEach(state.characters, id: \.id) { item in
                     NavigationLink(destination: nextScreen(item.url)) {
-                        CharacterListRow(item: item, themeManager: themeManager)
+                        CharacterListRow(item: item,
+                                         themeManager: themeManager,
+                                        defaultImage: state.defaultImage)
                     }
                 }
             }
@@ -55,7 +58,27 @@ struct CharacterListView: View, BaseView {
 struct CharacterListView_Previews: PreviewProvider {
     static var previews: some View {
         CharacterListView(viewModel: nil,
-                          state: CharacterListViewState(),
-                          themeManager: DefaultThemeManager())
+                          state: CharacterListView_Previews.createState(),
+                          themeManager: ThemeManager())
+    }
+    
+    static private func createState() -> CharacterListViewState {
+        var uiData = [CharacterUIData]()
+        
+        for index in 1...10 {
+            let data = CharacterUIData(id: index,
+                                       name: "Name\(index)",
+                                       imageUrl: nil,
+                                       url: "",
+                                       films: nil,
+                                       tvShows: nil,
+                                       videoGames: nil)
+            uiData.append(data)
+        }
+        
+        let state = CharacterListViewState(showProgress: true,
+                                           characters: uiData)
+        
+        return state
     }
 }

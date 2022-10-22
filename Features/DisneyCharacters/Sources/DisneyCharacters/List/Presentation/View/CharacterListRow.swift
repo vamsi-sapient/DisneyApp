@@ -11,11 +11,15 @@ import DisneyUIKit
 struct CharacterListRow: View {
     
     private let item: CharacterUIData
+    private let defaultImage: String
     private let themeManager: ThemeManagerProtocol
     
-    init(item: CharacterUIData, themeManager: ThemeManagerProtocol) {
+    init(item: CharacterUIData,
+         themeManager: ThemeManagerProtocol,
+         defaultImage: String) {
         self.item = item
         self.themeManager = themeManager
+        self.defaultImage = defaultImage
     }
     
     var body: some View {
@@ -26,7 +30,10 @@ struct CharacterListRow: View {
                        height: CharacterListViewConstants.Dimensions.height)
                 .cornerRadius(CharacterListViewConstants.Dimensions.cornerRadius)
             } else {
-                Image(systemName: CharacterListViewConstants.defaultImage)
+                Image(defaultImage, bundle: Bundle.module)
+                    .frame(width: CharacterListViewConstants.Dimensions.width,
+                           height: CharacterListViewConstants.Dimensions.height)
+                    .cornerRadius(CharacterListViewConstants.Dimensions.cornerRadius)
             }
             
             Text(item.name.uppercased()).padding(CharacterListViewConstants.Dimensions.padding)

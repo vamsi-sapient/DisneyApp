@@ -20,20 +20,22 @@ let package = Package(
         .package(path: "../../Dependencies/NetworkManager"),
         .package(path: "../../Dependencies/DisneyUIKit"),
         .package(path: "../../Dependencies/SharedDependencies"),
+        .package(path: "../../Features/AppInitializer"),
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.10.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DisneyCharacters",
-            dependencies: ["Core", "SharedDependencies", "DisneyUIKit", "NetworkManager"],
+            dependencies: ["Core", "SharedDependencies", "DisneyUIKit", "NetworkManager", "AppInitializer"],
             resources: [.process("Resources")],
             swiftSettings: [.unsafeFlags(["-enable-testing"])]
         ),
         .testTarget(
             name: "DisneyCharactersTests",
-            dependencies: ["DisneyCharacters"],
-            resources: [.process("MockJSON")]
+            dependencies: ["DisneyCharacters", .product(name: "SnapshotTesting", package: "swift-snapshot-testing")],
+            resources: [.process("MockJSON"), .process("MockAssets")]
         ),
     ]
 )

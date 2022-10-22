@@ -10,6 +10,16 @@ import Core
 
 final class CharacterListViewState: BaseStateObject {
     @Published var characters = [CharacterUIData]()
+    let defaultImage: String
+    
+    init(showProgress: Bool = false,
+         characters: [CharacterUIData] = [CharacterUIData](),
+         defaultImage: String = CharacterListViewConstants.defaultImage) {
+        self.characters = characters
+        self.defaultImage = defaultImage
+        
+        super.init(showProgress: showProgress)
+    }
 }
 
 struct CharacterUIData {

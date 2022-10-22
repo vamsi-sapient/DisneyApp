@@ -7,6 +7,7 @@
 
 import SwiftUI
 import DisneyUIKit
+import AppInitializer
 
 struct CharacterDetailView: View, BaseView {
     
@@ -40,7 +41,10 @@ struct CharacterDetailView: View, BaseView {
                                    height: CharacterDetailViewConstants.Dimensions.height)
                             .cornerRadius(CharacterDetailViewConstants.Dimensions.cornerRadius)
                     } else {
-                        Image(systemName: CharacterListViewConstants.defaultImage)
+                        Image(state.defaultImage, bundle: Bundle.module)
+                            .frame(width: CharacterDetailViewConstants.Dimensions.width,
+                                   height: CharacterDetailViewConstants.Dimensions.height)
+                            .cornerRadius(CharacterDetailViewConstants.Dimensions.cornerRadius)
                     }
                 }
                 .background(bgColor)
@@ -73,15 +77,17 @@ struct CharacterDetailView_Previews: PreviewProvider {
     static var previews: some View {
         CharacterDetailView(viewModel: nil,
                             state: state(),
-                            themeManager: DefaultThemeManager(),
+                            themeManager: ThemeManager(),
                             params: CharacterDetailNavigationParams(url: ""))
     }
     
     static func state() -> CharacterDetailViewState {
-        let state = CharacterDetailViewState()
-        state.characterDetails = [CharacterDetailUIData(title: "Title", value: "Value"),
-                                  CharacterDetailUIData(title: "Title1", value: "Value1"),
-                                  CharacterDetailUIData(title: "Title2", value: "Value2")]
+        let characterDetails = [CharacterDetailUIData(title: "Title", value: "Value"),
+                                CharacterDetailUIData(title: "Title1", value: "Value1"),
+                                CharacterDetailUIData(title: "Title2", value: "Value2")]
+        let state = CharacterDetailViewState(screenTitle: "Title",
+                                             characterImageURL: "",
+                                             characterDetails: characterDetails)
         return state
     }
 }

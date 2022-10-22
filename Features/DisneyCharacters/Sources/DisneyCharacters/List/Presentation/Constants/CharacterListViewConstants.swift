@@ -26,6 +26,6 @@ struct CharacterListViewConstants {
         static let rowHeight = 80.0
     }
     
-    static let defaultImage = "person"
+    static let defaultImage = "defaultImage"
     static let detailScreenIdentifier = "\(ModuleNames.disneyCharacters.rawValue)_\(DisneyCharactersScreenConstants.detail.rawValue)"
 }
