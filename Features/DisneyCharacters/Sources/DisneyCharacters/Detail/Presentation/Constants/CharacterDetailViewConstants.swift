@@ -11,6 +11,7 @@ import Core
 struct CharacterDetailViewConstants {
     enum AccessibilityIdentifiers: String {
         case view = "CharacterDetailView"
+        case details = "CharacterDetailList"
     }
     
     struct Titles {

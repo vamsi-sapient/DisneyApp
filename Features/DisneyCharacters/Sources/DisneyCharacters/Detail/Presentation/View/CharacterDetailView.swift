@@ -52,18 +52,15 @@ struct CharacterDetailView: View, BaseView {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .frame(height: CharacterDetailViewConstants.Dimensions.height)
                 
-                if #available(iOS 16, *) {
                     List {
                         ForEach(state.characterDetails, id: \.id) { item in
                             CharacterDetailRow(item: item, themeManager: themeManager)
                         }
                         .listRowBackground(Color.white)
                     }
-                    .scrollContentBackground(.hidden) // Xcode 14b4+
                     .background(bgColor)
-                } else {
-                    // Fallback on earlier versions
-                }
+                    .listStyle(.plain)
+                    .accessibilityIdentifier(CharacterDetailViewConstants.AccessibilityIdentifiers.details.rawValue)
             }
             .background(bgColor)
             .navigationTitle(Text(state.screenTitle))

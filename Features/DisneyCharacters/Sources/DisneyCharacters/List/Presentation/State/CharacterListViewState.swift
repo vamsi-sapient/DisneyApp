@@ -22,7 +22,7 @@ final class CharacterListViewState: BaseStateObject {
     }
 }
 
-struct CharacterUIData {
+struct CharacterUIData: Identifiable {
     let id: Int
     let name: String
     let imageUrl: String?

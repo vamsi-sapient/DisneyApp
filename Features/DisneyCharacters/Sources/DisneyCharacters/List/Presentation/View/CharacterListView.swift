@@ -31,14 +31,13 @@ struct CharacterListView: View, BaseView {
         if state.showProgress {
             ActivityIndicatorView(themeManager: themeManager)
         } else {
-            List {
-                ForEach(state.characters, id: \.id) { item in
+            List(state.characters) { item in
                     NavigationLink(destination: nextScreen(item.url)) {
                         CharacterListRow(item: item,
                                          themeManager: themeManager,
                                         defaultImage: state.defaultImage)
+                        .accessibilityIdentifier(item.name)
                     }
-                }
             }
             .navigationTitle(CharacterListViewConstants.Strings.screenTitle)
             .navigationBarTitleDisplayMode(.inline)

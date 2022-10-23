@@ -80,7 +80,7 @@ identifier_name:
     - z
 
 line_length:
-  warning: 180
+  warning: 300
   ignores_urls: true
   ignores_function_declarations: true
   ignores_comments: true
