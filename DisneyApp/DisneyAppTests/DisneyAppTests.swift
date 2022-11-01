@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import NetworkManager
 import DisneyCharacters
 
 @testable import DisneyApp

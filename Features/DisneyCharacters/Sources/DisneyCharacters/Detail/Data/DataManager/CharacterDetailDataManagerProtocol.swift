@@ -8,7 +8,7 @@
 import Foundation
 import Core
 import SwiftUI
-import NetworkManager
+
 
 protocol CharacterDetailDataManagerProtocol {
     func getCharacterDetails(_ url: String) -> Response<CharacterDetailDTOModel>

@@ -8,7 +8,7 @@
 import Foundation
 import Core
 import SwiftUI
-import NetworkManager
+
 
 struct CharacterListDataManager: CharacterListDataManagerProtocol {
     

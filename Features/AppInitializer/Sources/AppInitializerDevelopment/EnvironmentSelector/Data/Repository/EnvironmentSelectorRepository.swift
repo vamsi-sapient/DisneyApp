@@ -9,7 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 import PromiseKit
-import NetworkManager
+
 import AppInitializer
 
 public final class EnvironmentSelectorRepository: EnvironmentSelectorRepositoryProtocol {

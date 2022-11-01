@@ -9,7 +9,6 @@ import Foundation
 import Core
 import SwiftUI
 import PromiseKit
-import NetworkManager
 
 struct CharacterListRepository: CharacterListRepositoryProtocol {
     private let dataManager: CharacterListDataManagerProtocol

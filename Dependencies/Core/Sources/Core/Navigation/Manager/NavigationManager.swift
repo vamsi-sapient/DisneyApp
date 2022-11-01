@@ -11,7 +11,7 @@ public final class NavigationManager: NavigationManagerProtocol {
     
     private static let shared = NavigationManager()
     private var crashlytics: CrashlyticsProtocol?
-    var navigationLinkProviders = [String: NavigationProviderProtocol]()
+    private var navigationLinkProviders = [String: NavigationProviderProtocol]()
     
     private init() {
     }

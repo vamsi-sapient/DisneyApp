@@ -10,7 +10,6 @@ import Core
 import SharedDependencies
 import DisneyCharacters
 import AppInitializer
-import NetworkManager
 import DisneyUIKit
 
 @main

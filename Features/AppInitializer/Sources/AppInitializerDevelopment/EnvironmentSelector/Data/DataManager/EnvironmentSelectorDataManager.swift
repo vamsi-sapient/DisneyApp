@@ -8,7 +8,6 @@
 import Foundation
 import Core
 import SwiftUI
-import NetworkManager
 import PromiseKit
 import AppInitializer
 

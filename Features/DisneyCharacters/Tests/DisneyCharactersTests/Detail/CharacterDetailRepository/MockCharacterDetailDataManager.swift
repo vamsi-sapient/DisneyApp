@@ -7,7 +7,7 @@
 
 import Foundation
 import Core
-import NetworkManager
+
 
 @testable import DisneyCharacters
 

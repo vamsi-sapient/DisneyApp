@@ -7,7 +7,7 @@
 
 import XCTest
 import Core
-import NetworkManager
+
 
 @testable import DisneyCharacters
 

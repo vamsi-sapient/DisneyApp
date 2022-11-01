@@ -11,7 +11,6 @@ import SharedDependencies
 import DisneyCharacters
 import AppInitializer
 import AppInitializerDevelopment
-import NetworkManager
 import DisneyUIKit
 
 @main
